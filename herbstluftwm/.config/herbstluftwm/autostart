@@ -1,0 +1,346 @@
+#!/usr/bin/env bash
+
+# %%base16_template: shell-variables##default %%
+# Gruvbox dark, hard scheme by Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+
+color00="#1d2021" # Base 00 - Black
+color01="#fb4934" # Base 08 - Red
+color02="#b8bb26" # Base 0B - Green
+color03="#fabd2f" # Base 0A - Yellow
+color04="#83a598" # Base 0D - Blue
+color05="#d3869b" # Base 0E - Magenta
+color06="#8ec07c" # Base 0C - Cyan
+color07="#d5c4a1" # Base 05 - White
+color08="#665c54" # Base 03 - Bright Black
+color09=$color01 # Base 08 - Bright Red
+color10=$color02 # Base 0B - Bright Green
+color11=$color03 # Base 0A - Bright Yellow
+color12=$color04 # Base 0D - Bright Blue
+color13=$color05 # Base 0E - Bright Magenta
+color14=$color06 # Base 0C - Bright Cyan
+color15="#fbf1c7" # Base 07 - Bright White
+color16="#fe8019" # Base 09
+color17="#d65d0e" # Base 0F
+color18="#3c3836" # Base 01
+color19="#504945" # Base 02
+color20="#bdae93" # Base 04
+color21="#ebdbb2" # Base 06
+color_foreground="#d5c4a1" # Base 05
+color_background="#1d2021" # Base 00
+# %%base16_template_end%%
+
+# use handy shortcut of the long herbstclient command in this config
+hc() {
+    herbstclient "$@"
+}
+
+# emit reload hook to indicate reloading of the config
+hc emit_hook reload
+
+################################################################
+## Keybindings Section                                        ##
+################################################################
+
+# remove all existing keybindings
+hc keyunbind --all
+
+# Mod=Mod1    # Use alt as the main modifier
+Mod=Mod4   # Use the super key as the main modifier
+
+hc keybind $Mod-Control-e quit
+hc keybind $Mod-Control-r reload
+hc keybind $Mod-Control-q close
+
+# launch programs
+################################################################
+# open standard terminal
+hc keybind $Mod-Return spawn ${TERMINAL:-xterm}
+# open standard browser
+hc keybind $Mod-b spawn ${BROWSER}
+# open pass integration via autopass
+hc keybind $Mod-a spawn autopass
+# show lockscreen or screensaver
+hc keybind $Mod-Control-s spawn xset s activate # xautolock -locknow
+# launcher configuration
+hc keybind $Mod-x spawn rofi -show drun
+
+# basic movement
+################################################################
+# focusing clients
+hc keybind $Mod-Left  focus left
+hc keybind $Mod-Down  focus down
+hc keybind $Mod-Up    focus up
+hc keybind $Mod-Right focus right
+hc keybind $Mod-h     focus left
+hc keybind $Mod-j     focus down
+hc keybind $Mod-k     focus up
+hc keybind $Mod-l     focus right
+
+# moving clients
+hc keybind $Mod-Shift-Left  shift left
+hc keybind $Mod-Shift-Down  shift down
+hc keybind $Mod-Shift-Up    shift up
+hc keybind $Mod-Shift-Right shift right
+hc keybind $Mod-Shift-h     shift left
+hc keybind $Mod-Shift-j     shift down
+hc keybind $Mod-Shift-k     shift up
+hc keybind $Mod-Shift-l     shift right
+
+# splitting frames
+# create an empty frame at the specified direction
+hc keybind $Mod-v       split   bottom  0.5
+hc keybind $Mod-h       split   right   0.5
+# let the current frame explode into subframes
+hc keybind $Mod-Control-space split explode
+
+# resizing frames
+resizestep=0.05
+hc keybind $Mod-Control-h       resize left +$resizestep
+hc keybind $Mod-Control-j       resize down +$resizestep
+hc keybind $Mod-Control-k       resize up +$resizestep
+hc keybind $Mod-Control-l       resize right +$resizestep
+hc keybind $Mod-Control-Left    resize left +$resizestep
+hc keybind $Mod-Control-Down    resize down +$resizestep
+hc keybind $Mod-Control-Up      resize up +$resizestep
+hc keybind $Mod-Control-Right   resize right +$resizestep
+
+# cycle through tags
+hc keybind $Mod-period use_index +1 --skip-visible
+hc keybind $Mod-comma  use_index -1 --skip-visible
+
+# layouting
+hc keybind $Mod-r remove
+hc keybind $Mod-s floating toggle
+hc keybind $Mod-f fullscreen toggle
+hc keybind $Mod-p pseudotile toggle
+# The following cycles through the available layouts within a frame, but skips
+# layouts, if the layout change wouldn't affect the actual window positions.
+# I.e. if there are two windows within a frame, the grid layout is skipped.
+hc keybind $Mod-space                                                           \
+            or , and . compare tags.focus.curframe_wcount = 2                   \
+                     . cycle_layout +1 vertical horizontal max vertical grid    \
+               , cycle_layout +1
+
+# mouse
+hc mouseunbind --all
+hc mousebind $Mod-Button1 move
+hc mousebind $Mod-Button2 zoom
+hc mousebind $Mod-Button3 resize
+
+# focus
+hc keybind $Mod-BackSpace   cycle_monitor
+hc keybind $Mod-Tab         cycle_all +1
+hc keybind $Mod-Shift-Tab   cycle_all -1
+hc keybind $Mod-c cycle
+hc keybind $Mod-i jumpto urgent
+
+# multimedia keys
+################################################################
+hc keybind XF86AudioLowerVolume spawn pamixer --decrease 5
+hc keybind XF86AudioRaiseVolume spawn pamixer --increase 5
+hc keybind XF86AudioMute spawn pamixer --toggle-mute
+hc keybind XF86MonBrightnessUp spawn xbacklight +5
+hc keybind XF86MonBrightnessDown spawn xbacklight -5
+
+# theme switcher, set theme variables at the first start only
+################################################################
+if hc silent new_attr uint my_current_theme; then
+	hc silent set_attr my_current_theme 1
+fi
+hc keybind $Mod-Control-t spawn ~/.config/herbstluftwm/theme_switcher.sh
+
+################################################################
+## Configure Tags                                             ##
+################################################################
+
+# default layout
+# 0: vertical - clients are placed below each other
+# 1: horizontal - clients are placed next to each other
+# 2: max - all clients are maximized in this frame
+# 3: grid - clients are arranged in an almost quadratic grid
+hc set default_frame_layout 3
+
+# tags
+tag_names=( {1..9} )
+tag_keys=( {1..9} 0 )
+
+hc rename default "${tag_names[0]}" || true
+for i in ${!tag_names[@]} ; do
+    hc add "${tag_names[$i]}"
+    key="${tag_keys[$i]}"
+    if ! [ -z "$key" ] ; then
+        hc keybind "$Mod-$key" use_index "$i"
+        hc keybind "$Mod-Shift-$key" move_index "$i"
+    fi
+done
+
+################################################################
+## Theming Section                                            ##
+################################################################
+
+hc attr theme.tiling.reset 1
+hc attr theme.floating.reset 1
+
+# width of the outer border of frames
+hc set frame_border_width 0
+# padding within each frame
+hc set frame_padding 0
+
+# set whether the frame surroundings are drawn for empty frames
+hc set always_show_frame 0
+
+# background of empty frames transparent
+hc set frame_bg_transparent 1
+# size of background area before tranparent area
+hc set frame_transparent_width 0
+
+# gap between different frames
+hc set frame_gap 30
+# gap between windows within one frame
+hc set window_gap 0
+hc set smart_window_surroundings 0
+hc set smart_frame_surroundings 1
+hc set mouse_recenter_gap 0
+
+hc attr theme.normal.color "$color07"
+hc attr theme.active.color "$color15"
+hc attr theme.urgent.color "$color01"
+hc attr theme.border_width 5
+
+hc attr theme.inner_width 0
+
+hc set focus_follows_mouse 1
+
+################################################################
+## Frame Rules Section                                        ##
+################################################################
+
+hc unrule -F
+
+hc rule focus=on # normally focus new clients
+
+hc rule not windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH|NOTIFICATION|DOCK|DESKTOP)' hook=window_created
+
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
+hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+
+################################################################
+## Multiple Monitor Setup Section                             ##
+################################################################
+
+# do multi monitor setup here, e.g.:
+# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
+# or simply:
+# hc detect_monitors
+
+################################################################
+## Start Background Processes Section                         ##
+################################################################
+
+{
+	pids=( )	
+	
+	# start statusbar (lemonbar)
+	hc pad 0 34
+	~/.config/lemonbar/lemonbar_feeder.sh | lemonbar -u 10 -B "$color_background" -F "$color_foreground" -f "Merriweather Sans:size=12:style=bold" -f "Font Awesome 5 Free:size=16:style=solid" &
+	pids+=( $! )
+	
+	# listen for and react to events (hooks)
+	hc -i '(reload|rule|tag_flags|tag_changed)' | while read hook name winid
+	do
+
+		case "$hook" in
+
+			# kill all runtime processes and exit listen loop
+			'reload' )
+				kill ${pids[@]}
+			       	break ;;
+
+			'tag_changed' )
+				hc silent set_attr my_window_count $(hc get_attr tags.focus.client_count) ;;
+
+			'tag_flags' )
+				# check whether a window was closed
+				current_window_count=$(hc get_attr tags.focus.client_count)
+				if [ $(hc get_attr my_window_count) -gt $current_window_count ]; then
+
+					hc lock
+					
+					# search backwards in frames unitl we find a non-empty frame and focus this one
+					for i in `seq 1 $(hc get_attr tags.focus.frame_count)`;
+					do
+						if [ $(hc get_attr tags.focus.curframe_wcount) -gt 0 ]; then
+							break
+						fi
+
+						hc cycle_frame -1
+					done
+				fi
+				
+				hc silent set_attr my_window_count $current_window_count 
+				hc unlock ;;
+
+			'rule' )
+				# for newly opended windows we do not use the window count mechanism as for closed windows
+				# and use the hook mechanism of herbstluftwm instead. This has the advantage that we can
+				# exclude dialog windows etc. from the mechanism without addtional scripting (lazy mode)
+
+				# if the current frame only contains the just created window itsself, there is nothing to do
+				if [ $(hc get_attr tags.focus.curframe_wcount) -eq 1 ]; then
+					continue
+				fi
+
+				hc lock
+
+				hc cycle_frame +1
+				for i in `seq 2 $(hc get_attr tags.focus.frame_count)`;
+				do
+					if [ $(hc get_attr tags.focus.curframe_wcount) -eq 0 ]; then
+						hc bring $winid
+						break
+					fi
+					
+					hc cycle_frame +1
+				done 
+				
+				hc unlock ;;
+		esac
+	done
+} &
+
+################################################################
+## Only exectue on first start Section                        ##
+################################################################
+
+if hc silent new_attr bool my_not_first_autostart; then
+
+	# initialize window counter needed for scripting
+	hc silent new_attr uint my_window_count
+	hc silent set_attr my_window_count 0
+
+	setroot -s ~/.config/herbstluftwm/wallpapers/firewatch1.jpg
+
+	# start screen locker
+	# xautolock -detectsleep -time 10 -locker "~/.config/herbstluftwm/i3lock-extra.sh --screenshot --pixelize --grayscale" &
+	xss-lock --transfer-sleep-lock ~/.config/herbstluftwm/transfer-sleep-lock-i3lock.sh &
+
+	# set default 50/50 split horizontal layout for all tags
+	hc lock
+	hc set_layout grid
+	
+	for i in ${!tag_names[@]} ; do
+        	hc use_index "$i"
+		hc split horizontal 0.5
+	done
+
+	hc use_index 0
+fi
+
+################################################################
+
+# unlock (for example needed on first start)
+hc unlock
+
+# set formating of the object trees when printed
+herbstclient set tree_style '╾│ ├└╼─┐'

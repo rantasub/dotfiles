@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # %%base16_template: shell-variables##default %%
-# Gruvbox dark, hard scheme by Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+# Gruvbox dark, medium scheme by Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 
-color00="#1d2021" # Base 00 - Black
+color00="#282828" # Base 00 - Black
 color01="#fb4934" # Base 08 - Red
 color02="#b8bb26" # Base 0B - Green
 color03="#fabd2f" # Base 0A - Yellow
@@ -26,7 +26,7 @@ color19="#504945" # Base 02
 color20="#bdae93" # Base 04
 color21="#ebdbb2" # Base 06
 color_foreground="#d5c4a1" # Base 05
-color_background="#1d2021" # Base 00
+color_background="#282828" # Base 00
 # %%base16_template_end%%
 
 # use handy shortcut of the long herbstclient command in this config
@@ -319,7 +319,7 @@ if hc silent new_attr bool my_not_first_autostart; then
 	hc silent new_attr uint my_window_count
 	hc silent set_attr my_window_count 0
 
-	setroot -s ~/.config/herbstluftwm/wallpapers/firewatch1.jpg
+	setroot -s ~/.config/herbstluftwm/wallpapers/spaceshuttlestart.jpg
 
 	# start screen locker
 	# xautolock -detectsleep -time 10 -locker "~/.config/herbstluftwm/i3lock-extra.sh --screenshot --pixelize --grayscale" &

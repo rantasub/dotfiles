@@ -45,20 +45,20 @@ nnoremap <silent> <Leader>ig <Plug>IndentGuidesToggle
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 nnoremap <silent> <Leader>w :ToggleWhitespace<CR>
 nnoremap <silent> <Leader>u :GundoToggle<CR>
+
+let g:LanguageClient_serverCommands = { 
+	\ 'cpp' : ['cquery', '--log-file=/tmp/nvim_cquery.log', "--init={\"cacheDirectory\": \"/tmp/cquery\"}"],
+	\ }
 nnoremap <silent> <Leader>lc :call LanguageClient#cquery_callers()<CR>
 "LanguageClient#cquery_vars(...)
 "LanguageClient#cquery_derived(...)
 "LanguageClient#cquery_base(...)
 
-let g:LanguageClient_serverCommands = { 
-	\ 'cpp' : ['cquery', '--log-file=/tmp/nvim_cquery.log', "--init={\"cacheDirectory\": \"/tmp/cquery\"}"],
-	\ }
-
-nnoremap <silent> <F5> :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <F6> :Denite documentSymbol<CR>
 nnoremap <silent> <F7> :Denite references<CR>
 nnoremap <silent> <F8> :Denite workspaceSymbol<CR>
-"LanguageClient_textDocument_hover
 "anguageClient_textDocument_typeDefinition()
 "LanguageClient_textDocument_implementation()
 "LanguageClient_textDocument_rename()

@@ -41,10 +41,12 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:better_whitespace_enabled= 1
 
-nnoremap <silent> <Leader>ig <Plug>IndentGuidesToggle
-nnoremap <silent> <Leader>t :TagbarToggle<CR>
-nnoremap <silent> <Leader>w :ToggleWhitespace<CR>
-nnoremap <silent> <Leader>u :GundoToggle<CR>
+nnoremap <silent> <Leader>tf :call altr#forward()<CR>
+nnoremap <silent> <Leader>tF :call altr#back()<CR>
+nnoremap <silent> <Leader>ti :IndentGuidesToggle<CR>
+nnoremap <silent> <Leader>tt :TagbarToggle<CR>
+nnoremap <silent> <Leader>tu :GundoToggle<CR>
+nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
 
 let g:LanguageClient_serverCommands = { 
 	\ 'cpp' : ['cquery', '--log-file=/tmp/nvim_cquery.log', "--init={\"cacheDirectory\": \"/tmp/cquery\"}"],

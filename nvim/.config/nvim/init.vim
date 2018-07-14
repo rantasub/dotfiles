@@ -48,6 +48,9 @@ nnoremap <silent> <Leader>tt :TagbarToggle<CR>
 nnoremap <silent> <Leader>tu :GundoToggle<CR>
 nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
 
+let g:LanguageClient_diagnosticsEnable = 1
+let g:LanguageClient_diagnosticsSignsMax = 500
+let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_serverCommands = { 
 	\ 'cpp' : ['cquery', '--log-file=/tmp/nvim_cquery.log', "--init={\"cacheDirectory\": \"/tmp/cquery\"}"],
 	\ }

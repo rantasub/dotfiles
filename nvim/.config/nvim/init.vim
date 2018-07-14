@@ -7,8 +7,9 @@ let mapleader = "\<Space>"
 
 if dein#load_state('~/.cache/deinnvim')
  call dein#begin('~/.cache/deinnvim')
-
  call dein#add('~/.cache/deinnvim')
+
+ call dein#add('skywind3000/asyncrun.vim')
  call dein#add('Shougo/deoplete.nvim')
  call dein#add('Shougo/denite.nvim')
  call dein#add('morhetz/gruvbox')

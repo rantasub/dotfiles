@@ -18,10 +18,10 @@ if dein#load_state('~/.cache/deinnvim')
     \ 'rev': 'next',
     \ 'build': 'bash install.sh',
     \ })
- call dein#add('scrooloose/nerdcommenter')
  call dein#add('scrooloose/nerdtree')
  call dein#add('majutsushi/tagbar')
  call dein#add('wellle/targets.vim')
+ call dein#add('tomtom/tcomment_vim')
  call dein#add('vim-airline/vim-airline')
  call dein#add('kana/vim-altr')
  call dein#add('Chiel92/vim-autoformat')

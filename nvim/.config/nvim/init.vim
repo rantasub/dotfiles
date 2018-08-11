@@ -56,6 +56,7 @@ let g:LanguageClient_serverCommands = {
 	\ 'cpp' : ['cquery', '--log-file=/tmp/nvim_cquery.log', "--init={\"cacheDirectory\": \"/tmp/cquery\"}"],
 	\ }
 nnoremap <silent> <Leader>lc :call LanguageClient#cquery_callers()<CR>
+nnoremap <silent> <Leader>lr :call LanguageClient_textDocument_rename()<CR>
 "LanguageClient#cquery_vars(...)
 "LanguageClient#cquery_derived(...)
 "LanguageClient#cquery_base(...)
@@ -67,7 +68,6 @@ nnoremap <silent> <F7> :Denite references<CR>
 nnoremap <silent> <F8> :Denite workspaceSymbol<CR>
 "anguageClient_textDocument_typeDefinition()
 "LanguageClient_textDocument_implementation()
-"LanguageClient_textDocument_rename()
 "LanguageClient_textDocument_codeAction()
 "LanguageClient_workspace_applyEdit()
 "LanguageClient_workspace_executeCommand()

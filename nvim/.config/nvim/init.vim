@@ -31,6 +31,7 @@ if dein#load_state('~/.cache/deinnvim')
  call dein#add('easymotion/vim-easymotion')
  call dein#add('nathanaelkane/vim-indent-guides')
  call dein#add('janko-m/vim-test')
+ call dein#add('chaoren/vim-wordmotion')
 
  call dein#end()
  call dein#save_state()
@@ -123,6 +124,8 @@ nnoremap <silent> <Leader>b :Denite buffer<CR>
 nnoremap <silent> <Leader>g :Denite grep<CR>
 nnoremap <silent> <Leader>h :Denite help<CR>
 nnoremap <silent> <Leader>? :Denite command<CR>
+
+let g:wordmotion_spaces = '_-.'
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1

@@ -9,6 +9,7 @@ if dein#load_state('~/.cache/deinnvim')
  call dein#begin('~/.cache/deinnvim')
  call dein#add('~/.cache/deinnvim')
 
+ call dein#add('w0rp/ale')
  call dein#add('skywind3000/asyncrun.vim')
  call dein#add('arakashic/chromatica.nvim')
  call dein#add('Shougo/deoplete.nvim')
@@ -52,11 +53,18 @@ nnoremap <silent> <Leader>tt :TagbarToggle<CR>
 nnoremap <silent> <Leader>tu :GundoToggle<CR>
 nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
 
-let g:LanguageClient_diagnosticsEnable = 1
+let g:ale_completion_enabled = 0
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+let g:ale_linters = {'cpp':  ['clangtidy', 'cquery']}
+let g:ale_cpp_cquery_cache_directory = '/tmp/cquery'
+let g:airline#extensions#ale#enabled = 1
+
+let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_diagnosticsSignsMax = 500
 let g:LanguageClient_diagnosticsList = 'Location'
-let g:LanguageClient_serverCommands = { 
-	\ 'cpp' : ['cquery', '--log-file=/tmp/nvim_cquery.log', "--init={\"cacheDirectory\": \"/tmp/cquery\"}"],
+let g:LanguageClient_serverCommands = {
+	\ 'cpp' : ['cquery', '--log-file=/tmp/LanguageClientNeovimCquery.log', "--init={\"cacheDirectory\": \"/tmp/cquery\"}"],
 	\ }
 nnoremap <silent> <Leader>lc :call LanguageClient#cquery_callers()<CR>
 nnoremap <silent> <Leader>lr :call LanguageClient_textDocument_rename()<CR>

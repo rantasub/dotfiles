@@ -56,8 +56,10 @@ nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
 let g:ale_completion_enabled = 0
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
-let g:ale_linters = {'cpp':  ['clangtidy', 'cquery']}
+let g:ale_linters = {'cpp':  ['clang', 'clangtidy']}
+let g:ale_c_parse_compile_commands = 1
 let g:ale_cpp_cquery_cache_directory = '/tmp/cquery'
+let g:ale_cpp_clangtidy_checks = ['*', '-fuchsia-default-arguments', '-clang-diagnostic-c++98-compat-*']
 let g:airline#extensions#ale#enabled = 1
 
 let g:LanguageClient_diagnosticsEnable = 0

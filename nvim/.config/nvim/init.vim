@@ -11,7 +11,6 @@ if dein#load_state('~/.cache/deinnvim')
 
  call dein#add('w0rp/ale')
  call dein#add('skywind3000/asyncrun.vim')
- call dein#add('arakashic/chromatica.nvim')
  call dein#add('Shougo/deoplete.nvim')
  call dein#add('Shougo/denite.nvim')
  call dein#add('morhetz/gruvbox')
@@ -29,6 +28,7 @@ if dein#load_state('~/.cache/deinnvim')
  call dein#add('Chiel92/vim-autoformat')
  call dein#add('ntpeters/vim-better-whitespace')
  call dein#add('Squareys/vim-cmake')
+ call dein#add('octol/vim-cpp-enhanced-highlight')
  call dein#add('easymotion/vim-easymotion')
  call dein#add('nathanaelkane/vim-indent-guides')
  call dein#add('janko-m/vim-test')
@@ -85,10 +85,11 @@ nnoremap <silent> <F8> :Denite workspaceSymbol<CR>
 "LanguageClient_workspace_applyEdit()
 "LanguageClient_workspace_executeCommand()
 
-"let g:chromatica#libclang_path='/usr/local/opt/llvm/lib'
-let g:chromatica#enable_at_startup = 1
-let g:chromatica#highlight_feature_level = 1
-let g:chromatica#responsive_mode = 1
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_concepts_highlight = 1
 
 call denite#custom#var('file/rec', 'command',
 	\ ['rg', '--files', '--glob', '!.git'])

@@ -152,6 +152,13 @@ set hidden
 set wildmenu
 set wildmode=longest:full,full
 
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set hlsearch
+set showmatch
+
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4

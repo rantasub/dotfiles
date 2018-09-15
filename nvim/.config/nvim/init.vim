@@ -1,6 +1,3 @@
-if &compatible
- set nocompatible
-endif
 set runtimepath+=~/.cache/deinnvim/repos/github.com/Shougo/dein.vim
 
 let mapleader = "\<Space>"

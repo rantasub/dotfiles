@@ -148,6 +148,9 @@ colorscheme gruvbox
 
 set number relativenumber
 set cursorline
+set hidden
+set wildmenu
+set wildmode=longest:full,full
 
 filetype plugin indent on
 " show existing tab with 4 spaces width

@@ -46,6 +46,9 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:better_whitespace_enabled= 1
 
+nnoremap <silent> <Leader>ec :split $MYVIMRC<CR>
+autocmd! BufWritePost $MYVIMRC :source $MYVIMRC
+
 nnoremap <silent> <Leader>tf :call altr#forward()<CR>
 nnoremap <silent> <Leader>tF :call altr#back()<CR>
 nnoremap <silent> <Leader>ti :IndentGuidesToggle<CR>

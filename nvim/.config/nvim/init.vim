@@ -35,16 +35,22 @@ if dein#load_state('~/.cache/deinnvim')
  call dein#save_state()
 endif
 
-autocmd! BufWrite *.cpp,*.hpp,*.c,*.h :Autoformat
+augroup FileTypeCpp
+ autocmd!
+ autocmd BufWrite *.cpp,*.hpp,*.c,*.h :Autoformat
+augroup END
+
+nnoremap <silent> <Leader>ec :split $MYVIMRC<CR>
+augroup VimRC
+ autocmd!
+ autocmd BufWritePost $MYVIMRC :source $MYVIMRC
+augroup END
 
 let g:deoplete#enable_at_startup = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:better_whitespace_enabled= 1
-
-nnoremap <silent> <Leader>ec :split $MYVIMRC<CR>
-autocmd! BufWritePost $MYVIMRC :source $MYVIMRC
 
 nnoremap <silent> <Leader>tf :call altr#forward()<CR>
 nnoremap <silent> <Leader>tF :call altr#back()<CR>

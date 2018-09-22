@@ -53,7 +53,7 @@ set smartcase
 set gdefault
 set incsearch
 set hlsearch
-set showmatch
+set noshowmatch
 
 let g:gruvbox_italic = 1
 set background=dark

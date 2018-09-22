@@ -63,6 +63,9 @@ colorscheme gruvbox
 augroup FileTypeCpp
  autocmd!
  autocmd BufWrite *.cpp,*.hpp,*.c,*.h :Autoformat
+ autocmd FileType cpp nnoremap <buffer> <silent> gd :call LanguageClient_textDocument_definition()<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> gD :call LanguageClient_textDocument_implementation()<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> K :call LanguageClient_textDocument_hover()<CR>
 augroup END
 
 nnoremap <silent> <Leader>ec :split $MYVIMRC<CR>
@@ -93,13 +96,10 @@ nnoremap <silent> <Leader>lr :call LanguageClient_textDocument_rename()<CR>
 "LanguageClient#cquery_derived(...)
 "LanguageClient#cquery_base(...)
 
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <F6> :Denite documentSymbol<CR>
 nnoremap <silent> <F7> :Denite references<CR>
 nnoremap <silent> <F8> :Denite workspaceSymbol<CR>
 "LanguageClient_textDocument_typeDefinition()
-"LanguageClient_textDocument_implementation()
 "LanguageClient_textDocument_codeAction()
 "LanguageClient_workspace_applyEdit()
 "LanguageClient_workspace_executeCommand()

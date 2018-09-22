@@ -77,6 +77,7 @@ augroup END
 nnoremap <silent> <Leader>tf :call altr#forward()<CR>
 nnoremap <silent> <Leader>tF :call altr#back()<CR>
 nnoremap <silent> <Leader>ti :IndentGuidesToggle<CR>
+nnoremap <silent> <Leader>tq :call asyncrun#quickfix_toggle(8)<CR>
 nnoremap <silent> <Leader>tt :TagbarToggle<CR>
 nnoremap <silent> <Leader>tu :GundoToggle<CR>
 nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
@@ -104,9 +105,16 @@ nnoremap <silent> <F8> :Denite workspaceSymbol<CR>
 "LanguageClient_workspace_applyEdit()
 "LanguageClient_workspace_executeCommand()
 
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
+
+let g:asyncrun_open = 8
+let g:asyncrun_save = 2
+let g:asyncrun_last = 1
+let g:asyncrun_timer = 1000
 
 let g:better_whitespace_enabled = 1
 

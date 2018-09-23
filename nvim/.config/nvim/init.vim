@@ -15,6 +15,7 @@ if dein#load_state('~/.cache/deinnvim')
     \ 'build': 'bash install.sh',
     \ })
  call dein#add('scrooloose/nerdtree')
+ call dein#add('sakhnik/nvim-gdb')
  call dein#add('majutsushi/tagbar')
  call dein#add('wellle/targets.vim')
  call dein#add('tomtom/tcomment_vim')
@@ -129,6 +130,17 @@ let g:deoplete#enable_at_startup = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+
+let g:nvimgdb_disable_start_keymaps = 1
+" g:nvimgdb_key_until
+" g:nvimgdb_key_continue
+" g:nvimgdb_key_next
+" g:nvimgdb_key_step
+" g:nvimgdb_key_finish
+" g:nvimgdb_key_breakpoint
+" g:nvimgdb_key_frameup
+" g:nvimgdb_key_framedown
+" g:nvimgdb_key_eval
 
 let g:wordmotion_spaces = '_-.'
 

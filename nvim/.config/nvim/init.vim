@@ -70,6 +70,11 @@ augroup FileTypeCpp
  autocmd FileType cpp nnoremap <buffer> <silent> K :call LanguageClient_textDocument_hover()<CR>
 augroup END
 
+augroup FileTypeQuickFix
+ autocmd!
+ autocmd FileType qf set nobuflisted
+augroup END
+
 nnoremap <silent> <Leader>ec :split $MYVIMRC<CR>
 augroup VimRC
  autocmd!

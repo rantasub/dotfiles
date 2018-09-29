@@ -35,6 +35,7 @@ if dein#load_state('~/.cache/deinnvim')
  call dein#save_state()
 endif
 
+nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
 filetype plugin indent on

@@ -95,7 +95,6 @@ nnoremap <silent> <Leader>fs :Denite file/rec<CR>
 nnoremap <silent> <Leader>b :Denite buffer<CR>
 nnoremap <silent> <Leader>g :Denite grep<CR>
 nnoremap <silent> <Leader>h :Denite help<CR>
-nnoremap <silent> <Leader>m :Denite menu<CR>
 nnoremap <silent> <Leader>? :Denite command<CR>
 
 nnoremap <silent> <Leader>lc :call LanguageClient#cquery_callers()<CR>
@@ -187,16 +186,3 @@ call denite#custom#map(
 	      \ '<denite:move_to_previous_line>',
 	      \ 'noremap'
           \)
-
-let s:menus = {}
-
-let s:menus.files = {
-	\ 'description': 'Files'
-	\ }
-
-let s:menus.files.command_candidates = [
-	\ ['Toggle file browser', 'NERDTreeToggle'],
-	\ ['Search', 'Denite file/rec'],
-	\]
-
-call denite#custom#var('menu', 'menus', s:menus)

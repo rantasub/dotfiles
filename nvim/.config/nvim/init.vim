@@ -82,6 +82,11 @@ augroup VimRC
  autocmd BufWritePost $MYVIMRC :source $MYVIMRC
 augroup END
 
+nnoremap <Up> <C-w>k
+nnoremap <Down> <C-w>j
+nnoremap <Left> <C-w>h
+nnoremap <Right> <C-w>l
+
 nnoremap <silent> <Leader>tf :call altr#forward()<CR>
 nnoremap <silent> <Leader>tF :call altr#back()<CR>
 nnoremap <silent> <Leader>ti :IndentGuidesToggle<CR>

@@ -57,8 +57,8 @@ hc keybind $Mod-Control-q close
 hc keybind $Mod-Return spawn ${TERMINAL:-xterm}
 # open standard browser
 hc keybind $Mod-b spawn ${BROWSER}
-# open pass integration via autopass
-hc keybind $Mod-a spawn autopass
+# open pass integration via rofi-pass
+hc keybind $Mod-a spawn rofi-pass
 # show lockscreen or screensaver
 hc keybind $Mod-Control-s spawn xset s activate # xautolock -locknow
 # launcher configuration

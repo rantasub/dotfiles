@@ -66,9 +66,21 @@ colorscheme gruvbox
 augroup FileTypeCpp
  autocmd!
  autocmd BufWrite *.cpp,*.hpp,*.c,*.h :Autoformat
+
  autocmd FileType cpp nnoremap <buffer> <silent> gd :call LanguageClient_textDocument_definition()<CR>
  autocmd FileType cpp nnoremap <buffer> <silent> gD :call LanguageClient_textDocument_implementation()<CR>
  autocmd FileType cpp nnoremap <buffer> <silent> K :call LanguageClient_textDocument_hover()<CR>
+
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>ls :Denite documentSymbol<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lS :Denite workspaceSymbol<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lr :Denite references<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lr :call LanguageClient_textDocument_rename()<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lt :call LanguageClient_textDocument_typeDefinition()<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>la :call LanguageClient_textDocument_codeAction()<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lc :call LanguageClient#cquery_callers()<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lv :call LanguageClient#cquery_vars(...)<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>ld :call LanguageClient#cquery_derived(...)<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lb :call LanguageClient#cquery_base(...)<CR>
 augroup END
 
 augroup FileTypeQuickFix
@@ -102,20 +114,6 @@ nnoremap <silent> <Leader>b :Denite buffer<CR>
 nnoremap <silent> <Leader>g :Denite grep<CR>
 nnoremap <silent> <Leader>h :Denite help<CR>
 nnoremap <silent> <Leader>? :Denite command<CR>
-
-nnoremap <silent> <Leader>lc :call LanguageClient#cquery_callers()<CR>
-nnoremap <silent> <Leader>lr :call LanguageClient_textDocument_rename()<CR>
-"LanguageClient#cquery_vars(...)
-"LanguageClient#cquery_derived(...)
-"LanguageClient#cquery_base(...)
-
-nnoremap <silent> <F6> :Denite documentSymbol<CR>
-nnoremap <silent> <F7> :Denite references<CR>
-nnoremap <silent> <F8> :Denite workspaceSymbol<CR>
-"LanguageClient_textDocument_typeDefinition()
-"LanguageClient_textDocument_codeAction()
-"LanguageClient_workspace_applyEdit()
-"LanguageClient_workspace_executeCommand()
 
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 

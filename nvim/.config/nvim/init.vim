@@ -6,7 +6,6 @@ if dein#load_state('~/.cache/deinnvim')
 
  call dein#add('w0rp/ale')
  call dein#add('skywind3000/asyncrun.vim')
- call dein#add('Shougo/deoplete.nvim')
  call dein#add('Shougo/denite.nvim')
  call dein#add('morhetz/gruvbox')
  call dein#add('sjl/gundo.vim')
@@ -28,6 +27,7 @@ if dein#load_state('~/.cache/deinnvim')
  call dein#add('easymotion/vim-easymotion')
  call dein#add('tpope/vim-fugitive')
  call dein#add('nathanaelkane/vim-indent-guides')
+ call dein#add('lifepillar/vim-mucomplete')
  call dein#add('janko-m/vim-test')
  call dein#add('chaoren/vim-wordmotion')
 
@@ -50,6 +50,7 @@ set cursorline
 set hidden
 set wildmenu
 set wildmode=longest:full,full
+set completeopt=menuone,noselect
 
 set ignorecase
 set smartcase
@@ -99,6 +100,7 @@ nnoremap <Down> <C-w>j
 nnoremap <Left> <C-w>h
 nnoremap <Right> <C-w>l
 
+nnoremap <silent> <Leader>tc :MUcompleteAutoToggle<CR>
 nnoremap <silent> <Leader>tf :call altr#forward()<CR>
 nnoremap <silent> <Leader>tF :call altr#back()<CR>
 nnoremap <silent> <Leader>ti :IndentGuidesToggle<CR>
@@ -140,6 +142,11 @@ let g:deoplete#enable_at_startup = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+
+let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#completion_delay = 1000
+let g:mucomplete#always_use_completeopt = 1
+let g:mucomplete#buffer_relative_paths = 1
 
 let g:nvimgdb_disable_start_keymaps = 1
 " g:nvimgdb_key_until

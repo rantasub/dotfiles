@@ -100,6 +100,7 @@ nnoremap <Down> <C-w>j
 nnoremap <Left> <C-w>h
 nnoremap <Right> <C-w>l
 
+nnoremap <silent> <Leader>tb :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>tc :MUcompleteAutoToggle<CR>
 nnoremap <silent> <Leader>tf :call altr#forward()<CR>
 nnoremap <silent> <Leader>tF :call altr#back()<CR>
@@ -109,9 +110,7 @@ nnoremap <silent> <Leader>tt :TagbarToggle<CR>
 nnoremap <silent> <Leader>tu :GundoToggle<CR>
 nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
 
-nnoremap <silent> <Leader>fb :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>fs :Denite file/rec<CR>
-
+nnoremap <silent> <Leader>f :Denite file/rec<CR>
 nnoremap <silent> <Leader>b :Denite buffer<CR>
 nnoremap <silent> <Leader>g :Denite grep<CR>
 nnoremap <silent> <Leader>h :Denite help<CR>

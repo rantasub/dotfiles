@@ -1,0 +1,3 @@
+[submodule "nvim/.config/nvim/pack/remote/start/vim-unimpaired"]
+	path = nvim/.config/nvim/pack/remote/start/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired

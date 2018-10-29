@@ -54,7 +54,6 @@ set completeopt=menuone,noselect
 
 set ignorecase
 set smartcase
-set gdefault
 set incsearch
 set hlsearch
 set noshowmatch

@@ -68,20 +68,14 @@ augroup FileTypeCpp
  autocmd!
  autocmd BufWrite *.cpp,*.hpp,*.c,*.h :Autoformat
 
- autocmd FileType cpp nnoremap <buffer> <silent> gd :call LanguageClient_textDocument_definition()<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> gD :call LanguageClient_textDocument_implementation()<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> K :call LanguageClient_textDocument_hover()<CR>
-
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>ls :Denite documentSymbol<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lS :Denite workspaceSymbol<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lr :Denite references<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lr :call LanguageClient_textDocument_rename()<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lt :call LanguageClient_textDocument_typeDefinition()<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>la :call LanguageClient_textDocument_codeAction()<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lc :call LanguageClient#cquery_callers()<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lv :call LanguageClient#cquery_vars(...)<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>ld :call LanguageClient#cquery_derived(...)<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lb :call LanguageClient#cquery_base(...)<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lr :call LanguageClient#textDocument_rename()<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lx :call LanguageClient#textDocument_references()<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lS :call LanguageClient#workspace_symbol()<CR>
+ autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lm :call LanguageClient_contextMenu()<CR>
 augroup END
 
 augroup FileTypeQuickFix
@@ -168,12 +162,17 @@ let g:ale_c_parse_compile_commands = 1
 let g:ale_cpp_cquery_cache_directory = '/tmp/cquery'
 let g:ale_cpp_clangtidy_checks = ['*', '-fuchsia-default-arguments', '-clang-diagnostic-c++98-compat-*']
 
+let g:LanguageClient_loggingLevel = 'INFO'
+let g:LanguageClient_loggingFile = '/tmp/LanguageClient-neovim.log'
+let g:LanguageClient_serverStderr = '/tmp/LanguageClient-neovim-serverstderr.log'
+let g:LanguageClient_selectionUI = 'quickfix'
+let g:LanguageClient_hoverPreview = 'Never'
 let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_diagnosticsSignsMax = 500
 let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_serverCommands = {
-	\ 'cpp' : ['cquery', '--log-file=/tmp/LanguageClientNeovimCquery.log', "--init={\"cacheDirectory\": \"/tmp/cquery\"}"],
-	\ }
+  \ 'cpp': ['clangd', '-use-dex-index', '-index', '-index-file=changeme_location_clangd.dex', '-log=verbose', '-limit-results=0'],
+  \ }
 
 call denite#custom#var('file/rec', 'command',
 	\ ['rg', '--files', '--glob', '!.git'])

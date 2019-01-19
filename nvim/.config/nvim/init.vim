@@ -63,6 +63,12 @@ set background=dark
 set termguicolors
 colorscheme gruvbox
 
+function! FilterQuickfixListForCurrentBuffer()
+    let l:qfListContent = getqflist()
+    call filter(l:qfListContent, {idx, val -> val.bufnr == bufnr('%')})
+    call setqflist(l:qfListContent)
+endfunction
+
 augroup FileTypeCpp
  autocmd!
  autocmd BufWrite *.cpp,*.hpp,*.c,*.h :Autoformat
@@ -102,6 +108,8 @@ nnoremap <silent> <Leader>tq :call asyncrun#quickfix_toggle(8)<CR>
 nnoremap <silent> <Leader>tt :TagbarToggle<CR>
 nnoremap <silent> <Leader>tu :GundoToggle<CR>
 nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
+
+nnoremap <silent> <Leader>qq :call FilterQuickfixListForCurrentBuffer()<CR>
 
 nnoremap <silent> <Leader>f :Denite file/rec<CR>
 nnoremap <silent> <Leader>b :Denite buffer<CR>

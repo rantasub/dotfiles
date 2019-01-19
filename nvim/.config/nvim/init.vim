@@ -159,8 +159,8 @@ let g:ale_sign_warning = '⚠'
 let g:ale_linters = {'cpp':  ['clang', 'clangtidy']}
 let g:ale_c_parse_compile_commands = 1
 let g:ale_cpp_clang_options = '-std=c++17 -Wall'
+let g:ale_cpp_clangtidy_checks = []
 let g:ale_cpp_cquery_cache_directory = '/tmp/cquery'
-let g:ale_cpp_clangtidy_checks = ['*', '-fuchsia-default-arguments', '-clang-diagnostic-c++98-compat-*']
 
 let g:LanguageClient_loggingLevel = 'INFO'
 let g:LanguageClient_loggingFile = '/tmp/LanguageClient-neovim.log'

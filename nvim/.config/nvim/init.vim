@@ -51,6 +51,8 @@ set hidden
 set wildmenu
 set wildmode=longest:full,full
 set completeopt=menuone,noselect
+set shortmess=c
+set noshowmode
 
 set ignorecase
 set smartcase
@@ -63,11 +65,22 @@ set background=dark
 set termguicolors
 colorscheme gruvbox
 
+function! PrintCompletionMessage()
+    unsilent echo 'Completion method: ' .get(g:mucomplete#msg#methods, g:mucomplete_current_method)
+    let &readonly=&readonly " Force updating of the cursor
+endfunction
+
 function! FilterQuickfixListForCurrentBuffer()
     let l:qfListContent = getqflist()
     call filter(l:qfListContent, {idx, val -> val.bufnr == bufnr('%')})
     call setqflist(l:qfListContent)
 endfunction
+
+augroup CompletionMenu
+ autocmd!
+ autocmd User MUcompletePmenu call PrintCompletionMessage()
+ autocmd CompleteDone * echo "\r"
+augroup END
 
 augroup FileTypeCpp
  autocmd!

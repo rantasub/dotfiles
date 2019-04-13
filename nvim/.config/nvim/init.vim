@@ -192,7 +192,7 @@ let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_diagnosticsSignsMax = 500
 let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_serverCommands = {
-  \ 'cpp': ['clangd', '-use-dex-index', '-index', '-index-file=changeme_location_clangd.dex', '-log=verbose', '-limit-results=0'],
+  \ 'cpp': ['clangd', '-use-dex-index', '-index', '-index-file=clangd.dex', '-log=verbose', '-limit-results=0'],
   \ }
 
 call denite#custom#var('file/rec', 'command',

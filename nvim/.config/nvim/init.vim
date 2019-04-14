@@ -9,10 +9,6 @@ if dein#load_state('~/.cache/deinnvim')
  call dein#add('Shougo/denite.nvim')
  call dein#add('morhetz/gruvbox')
  call dein#add('sjl/gundo.vim')
- call dein#add('autozimu/LanguageClient-neovim', {
-    \ 'rev': 'next',
-    \ 'build': 'bash install.sh',
-    \ })
  call dein#add('scrooloose/nerdtree')
  call dein#add('sakhnik/nvim-gdb')
  call dein#add('majutsushi/tagbar')
@@ -84,16 +80,8 @@ augroup END
 
 augroup FileTypeCpp
  autocmd!
+ packadd vim-lsc
  autocmd BufWrite *.cpp,*.hpp,*.c,*.h :Autoformat
-
- autocmd FileType cpp nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lr :call LanguageClient#textDocument_rename()<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lx :call LanguageClient#textDocument_references()<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lS :call LanguageClient#workspace_symbol()<CR>
- autocmd FileType cpp nnoremap <buffer> <silent> <Leader>lm :call LanguageClient_contextMenu()<CR>
 augroup END
 
 augroup FileTypeQuickFix
@@ -177,23 +165,35 @@ let g:wordmotion_spaces = '_-.'
 let g:ale_completion_enabled = 0
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
-let g:ale_linters = {'cpp':  ['clang', 'clangtidy']}
+let g:ale_linters = {'cpp':  ['clangd', 'clangtidy']}
 let g:ale_c_parse_compile_commands = 1
 let g:ale_cpp_clang_options = '-std=c++17 -Wall'
 let g:ale_cpp_clangtidy_checks = []
 let g:ale_cpp_cquery_cache_directory = '/tmp/cquery'
 
-let g:LanguageClient_loggingLevel = 'INFO'
-let g:LanguageClient_loggingFile = '/tmp/LanguageClient-neovim.log'
-let g:LanguageClient_serverStderr = '/tmp/LanguageClient-neovim-serverstderr.log'
-let g:LanguageClient_selectionUI = 'quickfix'
-let g:LanguageClient_hoverPreview = 'Never'
-let g:LanguageClient_diagnosticsEnable = 0
-let g:LanguageClient_diagnosticsSignsMax = 500
-let g:LanguageClient_diagnosticsList = 'Location'
-let g:LanguageClient_serverCommands = {
-  \ 'cpp': ['clangd', '-use-dex-index', '-index', '-index-file=clangd.dex', '-log=verbose', '-limit-results=0'],
-  \ }
+let g:lsc_enable_autocomplete = v:false
+let g:lsc_auto_completeopt = v:false
+let g:lsc_enable_diagnostics = v:false
+
+let g:lsc_server_commands = {
+    \ 'cpp': {
+    \   'command': 'clangd -limit-results=0',
+    \   'name': 'clangd',
+    \   'suppress_stderr': v:true,
+    \   },
+    \ }
+
+let g:lsc_auto_map = {
+    \ 'GoToDefinition': 'gd',
+    \ 'FindImplementations': 'gD',
+    \ 'FindReferences': 'gr',
+    \ 'Rename': 'gR',
+    \ 'DocumentSymbol': 'gS',
+    \ 'WorkspaceSymbol': 'gs',
+    \ 'FindCodeActions': 'ga',
+    \ 'ShowHover': v:true,
+    \ 'Completion': 'omnifunc',
+    \}
 
 call denite#custom#var('file/rec', 'command',
 	\ ['rg', '--files', '--glob', '!.git'])

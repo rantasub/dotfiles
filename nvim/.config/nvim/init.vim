@@ -1,3 +1,4 @@
+set runtimepath+=/usr/share/vim/vimfiles
 set runtimepath+=~/.cache/deinnvim/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.cache/deinnvim')
@@ -6,7 +7,6 @@ if dein#load_state('~/.cache/deinnvim')
 
  call dein#add('w0rp/ale')
  call dein#add('skywind3000/asyncrun.vim')
- call dein#add('Shougo/denite.nvim')
  call dein#add('morhetz/gruvbox')
  call dein#add('wellle/targets.vim')
  call dein#add('tomtom/tcomment_vim')
@@ -102,11 +102,7 @@ nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
 
 nnoremap <silent> <Leader>qq :call FilterQuickfixListForCurrentBuffer()<CR>
 
-nnoremap <silent> <Leader>f :Denite file/rec<CR>
-nnoremap <silent> <Leader>b :Denite buffer<CR>
-nnoremap <silent> <Leader>g :Denite grep<CR>
-nnoremap <silent> <Leader>h :Denite help<CR>
-nnoremap <silent> <Leader>? :Denite command<CR>
+nnoremap <silent> <Leader>f :FZF<CR>
 
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
@@ -169,25 +165,18 @@ let g:lsc_auto_map = {
     \ 'Completion': 'omnifunc',
     \}
 
-call denite#custom#var('file/rec', 'command',
-	\ ['rg', '--files', '--glob', '!.git'])
-
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-
-call denite#custom#map(
-	      \ 'insert',
-	      \ '<Down>',
-	      \ '<denite:move_to_next_line>',
-	      \ 'noremap'
-	      \)
-call denite#custom#map(
-	      \ 'insert',
-	      \ '<Up>',
-	      \ '<denite:move_to_previous_line>',
-	      \ 'noremap'
-          \)
+let g:fzf_colors = {
+	\ 'fg':      ['fg', 'Normal'],
+	\ 'bg':      ['bg', 'Normal'],
+	\ 'hl':      ['fg', 'Comment'],
+	\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+	\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+	\ 'hl+':     ['fg', 'Statement'],
+	\ 'info':    ['fg', 'PreProc'],
+	\ 'border':  ['fg', 'Ignore'],
+	\ 'prompt':  ['fg', 'Conditional'],
+	\ 'pointer': ['fg', 'Exception'],
+	\ 'marker':  ['fg', 'Keyword'],
+	\ 'spinner': ['fg', 'Label'],
+	\ 'header':  ['fg', 'Comment'],
+	\ }

@@ -7,3 +7,9 @@
 [submodule "nvim/.config/nvim/pack/remote/opt/vim-lsc"]
 	path = nvim/.config/nvim/pack/remote/opt/vim-lsc
 	url = https://github.com/natebosch/vim-lsc
+[submodule "nvim/.config/nvim/pack/remote/start/lightline.vim"]
+	path = nvim/.config/nvim/pack/remote/start/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "nvim/.config/nvim/pack/remote/start/lightline-gruvbox.vim"]
+	path = nvim/.config/nvim/pack/remote/start/lightline-gruvbox.vim
+	url = https://github.com/shinchu/lightline-gruvbox.vim

@@ -10,7 +10,6 @@ if dein#load_state('~/.cache/deinnvim')
  call dein#add('morhetz/gruvbox')
  call dein#add('wellle/targets.vim')
  call dein#add('tomtom/tcomment_vim')
- call dein#add('vim-airline/vim-airline')
  call dein#add('kana/vim-altr')
  call dein#add('Chiel92/vim-autoformat')
  call dein#add('ntpeters/vim-better-whitespace')
@@ -106,11 +105,6 @@ nnoremap <silent> <Leader>f :FZF<CR>
 
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#ale#enabled = 1
-
 let g:asyncrun_open = 8
 let g:asyncrun_save = 2
 let g:asyncrun_last = 1
@@ -180,3 +174,6 @@ let g:fzf_colors = {
 	\ 'spinner': ['fg', 'Label'],
 	\ 'header':  ['fg', 'Comment'],
 	\ }
+
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'

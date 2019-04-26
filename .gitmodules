@@ -13,3 +13,6 @@
 [submodule "nvim/.config/nvim/pack/remote/start/lightline-gruvbox.vim"]
 	path = nvim/.config/nvim/pack/remote/start/lightline-gruvbox.vim
 	url = https://github.com/shinchu/lightline-gruvbox.vim
+[submodule "nvim/.config/nvim/pack/remote/opt/ale"]
+	path = nvim/.config/nvim/pack/remote/opt/ale
+	url = https://github.com/w0rp/ale

@@ -8,23 +8,16 @@ if dein#load_state('~/.cache/deinnvim')
  call dein#add('skywind3000/asyncrun.vim')
  call dein#add('Shougo/denite.nvim')
  call dein#add('morhetz/gruvbox')
- call dein#add('sjl/gundo.vim')
- call dein#add('scrooloose/nerdtree')
- call dein#add('sakhnik/nvim-gdb')
- call dein#add('majutsushi/tagbar')
  call dein#add('wellle/targets.vim')
  call dein#add('tomtom/tcomment_vim')
  call dein#add('vim-airline/vim-airline')
  call dein#add('kana/vim-altr')
  call dein#add('Chiel92/vim-autoformat')
  call dein#add('ntpeters/vim-better-whitespace')
- call dein#add('Squareys/vim-cmake')
  call dein#add('octol/vim-cpp-enhanced-highlight')
- call dein#add('easymotion/vim-easymotion')
  call dein#add('tpope/vim-fugitive')
  call dein#add('nathanaelkane/vim-indent-guides')
  call dein#add('lifepillar/vim-mucomplete')
- call dein#add('janko-m/vim-test')
  call dein#add('chaoren/vim-wordmotion')
 
  call dein#end()
@@ -100,14 +93,11 @@ nnoremap <Down> <C-w>j
 nnoremap <Left> <C-w>h
 nnoremap <Right> <C-w>l
 
-nnoremap <silent> <Leader>tb :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>tc :MUcompleteAutoToggle<CR>
 nnoremap <silent> <Leader>tf :call altr#forward()<CR>
 nnoremap <silent> <Leader>tF :call altr#back()<CR>
 nnoremap <silent> <Leader>ti :IndentGuidesToggle<CR>
 nnoremap <silent> <Leader>tq :call asyncrun#quickfix_toggle(8)<CR>
-nnoremap <silent> <Leader>tt :TagbarToggle<CR>
-nnoremap <silent> <Leader>tu :GundoToggle<CR>
 nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
 
 nnoremap <silent> <Leader>qq :call FilterQuickfixListForCurrentBuffer()<CR>
@@ -138,8 +128,6 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 
-let g:deoplete#enable_at_startup = 1
-
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
@@ -148,17 +136,6 @@ let g:mucomplete#enable_auto_at_startup = 1
 let g:mucomplete#completion_delay = 1000
 let g:mucomplete#always_use_completeopt = 1
 let g:mucomplete#buffer_relative_paths = 1
-
-let g:nvimgdb_disable_start_keymaps = 1
-" g:nvimgdb_key_until
-" g:nvimgdb_key_continue
-" g:nvimgdb_key_next
-" g:nvimgdb_key_step
-" g:nvimgdb_key_finish
-" g:nvimgdb_key_breakpoint
-" g:nvimgdb_key_frameup
-" g:nvimgdb_key_framedown
-" g:nvimgdb_key_eval
 
 let g:wordmotion_spaces = '_-.'
 
@@ -169,12 +146,10 @@ let g:ale_linters = {'cpp':  ['clangd', 'clangtidy']}
 let g:ale_c_parse_compile_commands = 1
 let g:ale_cpp_clang_options = '-std=c++17 -Wall'
 let g:ale_cpp_clangtidy_checks = []
-let g:ale_cpp_cquery_cache_directory = '/tmp/cquery'
 
 let g:lsc_enable_autocomplete = v:false
 let g:lsc_auto_completeopt = v:false
 let g:lsc_enable_diagnostics = v:false
-
 let g:lsc_server_commands = {
     \ 'cpp': {
     \   'command': 'clangd -limit-results=0',
@@ -182,7 +157,6 @@ let g:lsc_server_commands = {
     \   'suppress_stderr': v:true,
     \   },
     \ }
-
 let g:lsc_auto_map = {
     \ 'GoToDefinition': 'gd',
     \ 'FindImplementations': 'gD',

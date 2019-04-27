@@ -1,17 +1,4 @@
 set runtimepath+=/usr/share/vim/vimfiles
-set runtimepath+=~/.cache/deinnvim/repos/github.com/Shougo/dein.vim
-
-if dein#load_state('~/.cache/deinnvim')
- call dein#begin('~/.cache/deinnvim')
- call dein#add('~/.cache/deinnvim')
-
- call dein#add('kana/vim-altr')
- call dein#add('Chiel92/vim-autoformat')
- call dein#add('octol/vim-cpp-enhanced-highlight')
-
- call dein#end()
- call dein#save_state()
-endif
 
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
@@ -144,8 +131,11 @@ augroup END
 
 augroup FileTypeCpp
  autocmd!
- packadd vim-lsc
  packadd ale
+ packadd vim-altr
+ packadd vim-autoformat
+ packadd vim-cpp-enhanced-highlight
+ packadd vim-lsc
  autocmd BufWrite *.cpp,*.hpp,*.c,*.h :Autoformat
 augroup END
 

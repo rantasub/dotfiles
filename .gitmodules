@@ -16,3 +16,30 @@
 [submodule "nvim/.config/nvim/pack/remote/opt/ale"]
 	path = nvim/.config/nvim/pack/remote/opt/ale
 	url = https://github.com/w0rp/ale
+[submodule "nvim/.config/nvim/pack/remote/start/asyncrun.vim"]
+	path = nvim/.config/nvim/pack/remote/start/asyncrun.vim
+	url = https://github.com/skywind3000/asyncrun.vim
+[submodule "nvim/.config/nvim/pack/remote/start/gruvbox"]
+	path = nvim/.config/nvim/pack/remote/start/gruvbox
+	url = https://github.com/morhetz/gruvbox
+[submodule "nvim/.config/nvim/pack/remote/start/targets.vim"]
+	path = nvim/.config/nvim/pack/remote/start/targets.vim
+	url = https://github.com/wellle/targets.vim
+[submodule "nvim/.config/nvim/pack/remote/start/tcomment_vim"]
+	path = nvim/.config/nvim/pack/remote/start/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim
+[submodule "nvim/.config/nvim/pack/remote/start/vim-better-whitespace"]
+	path = nvim/.config/nvim/pack/remote/start/vim-better-whitespace
+	url = https://github.com/ntpeters/vim-better-whitespace
+[submodule "nvim/.config/nvim/pack/remote/start/vim-fugitive"]
+	path = nvim/.config/nvim/pack/remote/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "nvim/.config/nvim/pack/remote/start/vim-indent-guides"]
+	path = nvim/.config/nvim/pack/remote/start/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides
+[submodule "nvim/.config/nvim/pack/remote/start/vim-mucomplete"]
+	path = nvim/.config/nvim/pack/remote/start/vim-mucomplete
+	url = https://github.com/lifepillar/vim-mucomplete
+[submodule "nvim/.config/nvim/pack/remote/start/vim-wordmotion"]
+	path = nvim/.config/nvim/pack/remote/start/vim-wordmotion
+	url = https://github.com/chaoren/vim-wordmotion

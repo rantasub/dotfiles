@@ -49,6 +49,30 @@ let g:indent_guides_guide_size = 1
 
 let g:lightline = {}
 let g:lightline.colorscheme = 'gruvbox'
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_warnings = "\uf071 "
+let g:lightline#ale#indicator_errors = "\uf05e "
+let g:lightline#ale#indicator_ok = "\uf00c"
+let g:lightline.component_expand = {
+    \ 'linter_checking': 'lightline#ale#checking',
+    \ 'linter_warnings': 'lightline#ale#warnings',
+    \ 'linter_errors': 'lightline#ale#errors',
+    \ 'linter_ok': 'lightline#ale#ok',
+    \ }
+let g:lightline.active = {
+    \ 'right': [[
+    \   'linter_checking',
+    \   'linter_errors',
+    \   'linter_warnings',
+    \   'linter_ok',
+    \   ]],
+    \ }
+let g:lightline.component_type = {
+    \ 'linter_checking': 'left',
+    \ 'linter_warnings': 'warning',
+    \ 'linter_errors': 'error',
+    \ 'linter_ok': 'left',
+    \ }
 
 let g:mucomplete#enable_auto_at_startup = 1
 let g:mucomplete#completion_delay = 1000
@@ -147,6 +171,7 @@ augroup END
 augroup FileTypeCpp
  autocmd!
  packadd ale
+ packadd lightline-ale
  packadd vim-altr
  packadd vim-autoformat
  packadd vim-cpp-enhanced-highlight

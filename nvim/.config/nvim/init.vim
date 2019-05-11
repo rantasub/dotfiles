@@ -30,24 +30,6 @@ set background=dark
 set termguicolors
 colorscheme gruvbox
 
-function! PrintCompletionMessage()
-    unsilent echo 'Completion method: ' .get(g:mucomplete#msg#methods, g:mucomplete_current_method)
-    let &readonly=&readonly " Force updating of the cursor
-endfunction
-
-function! FilterQuickfixListForCurrentBuffer()
-    let l:qfListContent = getqflist()
-    call filter(l:qfListContent, {idx, val -> val.bufnr == bufnr('%')})
-    call setqflist(l:qfListContent)
-endfunction
-
-function! MakeCommandCompletion(ArgLead, CmdLine, CursorPos)
-    let l:words = split(a:CmdLine)
-    let l:words[0] = 'make'
-    let l:command = join(l:words)
-    return bash#complete(l:command)
-endfunction
-
 let g:asyncrun_open = 8
 let g:asyncrun_save = 2
 let g:asyncrun_last = 1
@@ -137,6 +119,24 @@ let g:fzf_colors = {
 	\ 'spinner': ['fg', 'Label'],
 	\ 'header':  ['fg', 'Comment'],
 	\ }
+
+function! PrintCompletionMessage()
+    unsilent echo 'Completion method: ' .get(g:mucomplete#msg#methods, g:mucomplete_current_method)
+    let &readonly=&readonly " Force updating of the cursor
+endfunction
+
+function! FilterQuickfixListForCurrentBuffer()
+    let l:qfListContent = getqflist()
+    call filter(l:qfListContent, {idx, val -> val.bufnr == bufnr('%')})
+    call setqflist(l:qfListContent)
+endfunction
+
+function! MakeCommandCompletion(ArgLead, CmdLine, CursorPos)
+    let l:words = split(a:CmdLine)
+    let l:words[0] = 'make'
+    let l:command = join(l:words)
+    return bash#complete(l:command)
+endfunction
 
 augroup CompletionMenu
  autocmd!

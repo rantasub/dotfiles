@@ -41,6 +41,13 @@ function! FilterQuickfixListForCurrentBuffer()
     call setqflist(l:qfListContent)
 endfunction
 
+function! MakeCommandCompletion(ArgLead, CmdLine, CursorPos)
+    let l:words = split(a:CmdLine)
+    let l:words[0] = 'make'
+    let l:command = join(l:words)
+    return bash#complete(l:command)
+endfunction
+
 let g:asyncrun_open = 8
 let g:asyncrun_save = 2
 let g:asyncrun_last = 1
@@ -166,4 +173,4 @@ nnoremap <silent> <Leader>qq :call FilterQuickfixListForCurrentBuffer()<CR>
 
 nnoremap <silent> <Leader>f :FZF<CR>
 
-command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+command! -nargs=* -complete=customlist,MakeCommandCompletion Make AsyncRun -program=make @ <args>

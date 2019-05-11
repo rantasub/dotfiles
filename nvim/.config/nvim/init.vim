@@ -82,7 +82,6 @@ let g:ale_cursor_detail = 1
 let g:ale_echo_delay = 5000
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 1
-let g:ale_linters = {'cpp':  ['clangd', 'clangtidy']}
 let g:ale_linters_explicit = 1
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
@@ -91,6 +90,10 @@ let g:ale_virtualtext_delay = 1000
 let g:ale_c_parse_compile_commands = 1
 let g:ale_cpp_clang_options = '-std=c++17 -Wall'
 let g:ale_cpp_clangtidy_checks = []
+let g:ale_linters = {
+    \ 'cpp':  ['clangd', 'clangtidy'],
+    \ 'python': ['pyflakes', 'pylint'],
+    \ }
 
 let g:lsc_enable_autocomplete = v:false
 let g:lsc_auto_completeopt = v:false
@@ -99,6 +102,11 @@ let g:lsc_server_commands = {
     \ 'cpp': {
     \   'command': 'clangd -limit-results=0',
     \   'name': 'clangd',
+    \   'suppress_stderr': v:true,
+    \   },
+    \ 'python': {
+    \   'command': 'pyls',
+    \   'name': 'python-language-server',
     \   'suppress_stderr': v:true,
     \   },
     \ }

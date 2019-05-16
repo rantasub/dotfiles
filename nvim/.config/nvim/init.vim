@@ -205,5 +205,7 @@ nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
 nnoremap <silent> <Leader>qq :call FilterQuickfixListForCurrentBuffer()<CR>
 
 nnoremap <silent> <Leader>f :FZF<CR>
+nnoremap <silent> g* :execute(':Rg ' .expand('<cword>'))<CR>
 
 command! -nargs=* -complete=customlist,MakeCommandCompletion Make AsyncRun -program=make @ <args>
+command! -nargs=1 Rg call fzf#run({'source': 'rg <args>'})

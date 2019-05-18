@@ -210,3 +210,5 @@ nnoremap <silent> g* :execute(':Rg ' .expand('<cword>'))<CR>
 
 command! -nargs=* -complete=customlist,MakeCommandCompletion Make AsyncRun -program=make @ <args>
 command! -nargs=1 Rg call fzf#run({'source': 'rg <args>'})
+
+cabbrev <expr> %% expand('%:p:h')

@@ -83,15 +83,15 @@ let g:wordmotion_spaces = '_-.'
 
 let g:ale_close_preview_on_insert = 1
 let g:ale_completion_enabled = 0
-let g:ale_echo_cursor = 0
-let g:ale_cursor_detail = 1
-let g:ale_echo_delay = 5000
+let g:ale_echo_cursor = 1
+let g:ale_cursor_detail = 0
+let g:ale_echo_delay = 1000
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_linters_explicit = 1
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
-let g:ale_virtualtext_cursor = 1
+let g:ale_virtualtext_cursor = 0
 let g:ale_virtualtext_delay = 1000
 let g:ale_c_parse_compile_commands = 1
 let g:ale_cpp_clang_options = '-std=c++17 -Wall'

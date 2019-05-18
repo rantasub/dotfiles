@@ -185,6 +185,7 @@ augroup FileTypeQuickFix
 augroup END
 
 nnoremap <silent> <Leader>ec :split $MYVIMRC<CR>
+nnoremap <silent> <Leader>eC :edit $MYVIMRC<CR>
 augroup VimRC
  autocmd!
  autocmd BufWritePost $MYVIMRC :source $MYVIMRC

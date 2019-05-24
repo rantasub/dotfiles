@@ -74,7 +74,7 @@ let g:lightline.component_type = {
     \ 'linter_ok': 'left',
     \ }
 
-let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#enable_auto_at_startup = 0
 let g:mucomplete#completion_delay = 1000
 let g:mucomplete#always_use_completeopt = 1
 let g:mucomplete#buffer_relative_paths = 1

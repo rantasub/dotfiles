@@ -162,6 +162,13 @@ function! MakeCommandCompletion(ArgLead, CmdLine, CursorPos)
     return bash#complete(l:command)
 endfunction
 
+function! NinjaCommandCompletion(ArgLead, CmdLine, CursorPos)
+    let l:words = split(a:CmdLine)
+    let l:words[0] = 'ninja'
+    let l:command = join(l:words)
+    return bash#complete(l:command)
+endfunction
+
 function! HandleRipGrep(Output)
     let l:filename = split(a:Output, ':')[0]
     execute('edit ' .l:filename)
@@ -216,6 +223,7 @@ nnoremap <silent> g* :execute(':Rg ' .expand('<cword>'))<CR>
 tnoremap <A-e> <C-\><C-n>
 
 command! -nargs=* -complete=customlist,MakeCommandCompletion Make AsyncRun -program=make @ <args>
+command! -nargs=* -complete=customlist,NinjaCommandCompletion Ninja AsyncRun ninja <args>
 command! -bang -nargs=1 Rg call fzf#run(fzf#wrap('ripgrep', {'source': 'rg <args>', 'sink': function('HandleRipGrep')}, <bang>0))
 
 cabbrev <expr> %% expand('%:p:h')

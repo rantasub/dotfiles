@@ -213,7 +213,7 @@ nnoremap <silent> <Leader>qq :call FilterQuickfixListForCurrentBuffer()<CR>
 nnoremap <silent> <Leader>f :FZF<CR>
 nnoremap <silent> g* :execute(':Rg ' .expand('<cword>'))<CR>
 
-tnoremap <Esc> <C-\><C-n>
+tnoremap <A-e> <C-\><C-n>
 
 command! -nargs=* -complete=customlist,MakeCommandCompletion Make AsyncRun -program=make @ <args>
 command! -bang -nargs=1 Rg call fzf#run(fzf#wrap('ripgrep', {'source': 'rg <args>', 'sink': function('HandleRipGrep')}, <bang>0))

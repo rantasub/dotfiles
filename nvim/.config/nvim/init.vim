@@ -3,7 +3,9 @@ set runtimepath+=/usr/share/vim/vimfiles
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
-filetype plugin indent on
+filetype on
+filetype plugin on
+filetype indent on
 syntax enable
 set tabstop=4
 set shiftwidth=4

@@ -206,6 +206,16 @@ augroup VimRC
  autocmd BufWritePost $MYVIMRC :source $MYVIMRC
 augroup END
 
+nmap <Leader>n ]
+nmap <Leader>N [
+nmap <Leader>p [
+omap <Leader>n ]
+omap <Leader>N [
+omap <Leader>p [
+xmap <Leader>n ]
+xmap <Leader>N [
+xmap <Leader>p [
+
 nnoremap <Up> <C-w>k
 nnoremap <Down> <C-w>j
 nnoremap <Left> <C-w>h

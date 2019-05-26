@@ -185,11 +185,11 @@ augroup END
 
 augroup FileTypeCpp
  autocmd!
- packadd ale
- packadd lightline-ale
- packadd vim-altr
- packadd vim-autoformat
- packadd vim-cpp-enhanced-highlight
+ autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd ale
+ autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd lightline-ale
+ autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd vim-altr
+ autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd vim-autoformat
+ autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd vim-cpp-enhanced-highlight
  packadd vim-lsc
  autocmd BufWrite *.cpp,*.hpp,*.c,*.h :Autoformat
 augroup END

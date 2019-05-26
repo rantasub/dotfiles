@@ -192,6 +192,9 @@ augroup FileTypeCpp
  autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd vim-cpp-enhanced-highlight
  packadd vim-lsc
  autocmd BufWrite *.cpp,*.hpp,*.c,*.h :Autoformat
+
+ autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd echodoc.vim
+ autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h call echodoc#enable()
 augroup END
 
 augroup FileTypeQuickFix

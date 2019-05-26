@@ -55,3 +55,6 @@
 [submodule "nvim/.config/nvim/pack/remote/opt/lightline-ale"]
 	path = nvim/.config/nvim/pack/remote/opt/lightline-ale
 	url = https://github.com/maximbaz/lightline-ale
+[submodule "nvim/.config/nvim/pack/remote/opt/echodoc.vim"]
+	path = nvim/.config/nvim/pack/remote/opt/echodoc.vim
+	url = https://github.com/Shougo/echodoc.vim

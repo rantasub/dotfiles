@@ -33,6 +33,9 @@ set background=dark
 set termguicolors
 colorscheme gruvbox
 
+highlight ActiveWindow guibg=#282828
+highlight InactiveWindow guibg=#2D2D2D
+
 let g:asyncrun_open = 8
 let g:asyncrun_save = 2
 let g:asyncrun_last = 1
@@ -176,6 +179,15 @@ function! HandleRipGrep(Output)
     let l:filename = split(a:Output, ':')[0]
     execute('edit ' .l:filename)
 endfunction
+
+function! HandleWinEnter()
+    setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
+endfunction
+
+augroup WindowManagement
+    autocmd!
+    autocmd WinEnter * call HandleWinEnter()
+augroup END
 
 augroup CompletionMenu
  autocmd!

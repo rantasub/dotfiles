@@ -249,13 +249,20 @@ nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
 nnoremap <silent> <Leader>qq :call FilterQuickfixListForCurrentBuffer()<CR>
 
 nnoremap <silent> <Leader>f :Fd<CR>
-nnoremap <silent> g* :execute(':Rg ' .expand('<cword>'))<CR>
+nnoremap <silent> g* :execute(':RgFileType ' .expand('<cword>'))<CR>
 
 tnoremap <A-e> <C-\><C-n>
 
 command! -nargs=* -complete=customlist,MakeCommandCompletion Make AsyncRun -program=make @ <args>
 command! -nargs=* -complete=customlist,NinjaCommandCompletion Ninja AsyncRun ninja <args>
-command! -bang -nargs=0 Fd call fzf#run(fzf#wrap('fd', {'source': 'fd', 'sink': 'edit'}, <bang>0))
-command! -bang -nargs=1 Rg call fzf#run(fzf#wrap('ripgrep', {'source': 'rg --vimgrep <args>', 'sink': function('HandleRipGrep')}, <bang>0))
+
+command! -bang -nargs=0 Fd call fzf#run(fzf#wrap(
+    \ 'fd', {'source': 'fd', 'sink': 'edit'}, <bang>0))
+command! -bang -nargs=1 Rg call fzf#run(fzf#wrap(
+    \ 'ripgrep', {'source': 'rg --vimgrep <args>', 
+    \ 'sink': function('HandleRipGrep')}, <bang>0))
+command! -bang -nargs=1 RgFileType call fzf#run(fzf#wrap(
+    \ 'ripgrep_filetype', {'source': 'rg --vimgrep --type '. &filetype .' <args>', 
+    \ 'sink': function('HandleRipGrep')}, <bang>0))
 
 cabbrev <expr> %% expand('%:p:h')

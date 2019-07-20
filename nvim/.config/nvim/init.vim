@@ -221,7 +221,7 @@ nnoremap <silent> <Leader>ec :split $MYVIMRC<CR>
 nnoremap <silent> <Leader>eC :edit $MYVIMRC<CR>
 augroup VimRC
  autocmd!
- autocmd BufWritePost $MYVIMRC :source $MYVIMRC
+ autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup END
 
 nmap <Leader>n ]

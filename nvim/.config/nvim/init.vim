@@ -176,8 +176,11 @@ function! NinjaCommandCompletion(ArgLead, CmdLine, CursorPos)
 endfunction
 
 function! HandleRipGrep(Output)
-    let l:filename = split(a:Output, ':')[0]
-    execute('edit ' .l:filename)
+    let l:split = split(a:Output, ':')
+    let l:filename = l:split[0]
+    let l:row = l:split[1]
+    let l:column = l:split[2]
+    execute('edit +call\ cursor(' .l:row .',' .l:column .') ' .l:filename)
 endfunction
 
 function! HandleWinEnter()
@@ -245,13 +248,14 @@ nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
 
 nnoremap <silent> <Leader>qq :call FilterQuickfixListForCurrentBuffer()<CR>
 
-nnoremap <silent> <Leader>f :FZF<CR>
+nnoremap <silent> <Leader>f :Fd<CR>
 nnoremap <silent> g* :execute(':Rg ' .expand('<cword>'))<CR>
 
 tnoremap <A-e> <C-\><C-n>
 
 command! -nargs=* -complete=customlist,MakeCommandCompletion Make AsyncRun -program=make @ <args>
 command! -nargs=* -complete=customlist,NinjaCommandCompletion Ninja AsyncRun ninja <args>
-command! -bang -nargs=1 Rg call fzf#run(fzf#wrap('ripgrep', {'source': 'rg <args>', 'sink': function('HandleRipGrep')}, <bang>0))
+command! -bang -nargs=0 Fd call fzf#run(fzf#wrap('fd', {'source': 'fd', 'sink': 'edit'}, <bang>0))
+command! -bang -nargs=1 Rg call fzf#run(fzf#wrap('ripgrep', {'source': 'rg --vimgrep <args>', 'sink': function('HandleRipGrep')}, <bang>0))
 
 cabbrev <expr> %% expand('%:p:h')

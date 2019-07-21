@@ -205,8 +205,11 @@ augroup FileTypeCpp
  autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd vim-altr
  autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd vim-autoformat
  autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd vim-cpp-enhanced-highlight
- packadd vim-lsc
  autocmd BufWrite *.cpp,*.hpp,*.c,*.h :Autoformat
+
+ autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd vim-lsc
+ autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h call
+    \ RegisterLanguageServer('cpp', g:lsc_server_commands.cpp)
 
  autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd echodoc.vim
  autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h call echodoc#enable()

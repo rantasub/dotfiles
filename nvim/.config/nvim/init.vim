@@ -7,6 +7,10 @@ filetype on
 filetype plugin on
 filetype indent on
 syntax enable
+
+set mouse=n
+set mousemodel=popup
+
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4

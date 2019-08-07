@@ -10,8 +10,6 @@ unsetopt beep
 
 autoload -U compinit
 autoload -U promptinit
-compinit
-promptinit
 
 # Random quote from fortune-mod
 fortune
@@ -33,6 +31,9 @@ zplug load
 precmd() { print '' }
 export PROMPT='%F{green}%B%~%b%f $(git_super_status)$ '
 export RPROMPT='$(vi_mode_prompt_info)'
+
+compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"
+promptinit
 
 # Include shell aliases
 if [ -r ~/.config/shell/aliases ]; then

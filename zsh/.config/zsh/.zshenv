@@ -8,6 +8,7 @@ export LESSHISTFILE=/dev/null
 export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
 export ELINKS_CONFDIR="${XDG_DATA_HOME}/elinks"
 export PASSWORD_STORE_DIR=~/Passwörter
+export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/config"
 
 # Standard programs
 export EDITOR=nvim

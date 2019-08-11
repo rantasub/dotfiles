@@ -1,0 +1,76 @@
+[general]
+accounts = privatetrash, private, net, uni
+metadata = ~/.local/share/offlineimap
+pythonfile = ~/.config/offlineimap/offlineimap.py
+
+[DEFAULT]
+utf8foldernames = yes
+postsynchook = ~/.config/offlineimap/postsync.sh
+
+###############################################################################
+[Account privatetrash]
+localrepository = privatetrash-local
+remoterepository = privatetrash-remote
+
+[Repository privatetrash-local]
+type = Maildir
+localfolders = ~/.local/share/mail/privatetrash
+sep = /
+
+[Repository privatetrash-remote]
+type = IMAP
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remotehosteval = get_field('PrivateTrash', 'Host')
+remoteusereval = get_field('PrivateTrash', 'User')
+remotepasseval = get_pass('PrivateTrash')
+
+###############################################################################
+[Account private]
+localrepository = private-local
+remoterepository = private-remote
+
+[Repository private-local]
+type = Maildir
+localfolders = ~/.local/share/mail/private
+sep = /
+
+[Repository private-remote]
+type = Gmail
+remoteusereval = get_field('Private', 'Mail')
+remotepasseval = get_pass('Private')
+ssl_version = tls1_2
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+###############################################################################
+[Account net]
+localrepository = net-local
+remoterepository = net-remote
+
+[Repository net-local]
+type = Maildir
+localfolders = ~/.local/share/mail/net
+sep = /
+
+[Repository net-remote]
+type = Gmail
+remoteusereval = get_field('Net', 'Mail')
+remotepasseval = get_pass('Net')
+ssl_version = tls1_2
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+###############################################################################
+[Account uni]
+localrepository = uni-local
+remoterepository = uni-remote
+
+[Repository uni-local]
+type = Maildir
+localfolders = ~/.local/share/mail/uni
+sep = /
+
+[Repository uni-remote]
+type = IMAP
+remotehosteval = get_field('Uni', 'Host')
+remoteusereval = get_field('Uni', 'User')
+remotepasseval = get_pass('Uni')
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt

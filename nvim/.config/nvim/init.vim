@@ -8,6 +8,12 @@ filetype plugin on
 filetype indent on
 syntax enable
 
+set swapfile
+set writebackup
+set nobackup
+set backupcopy=auto
+set undofile
+
 set mouse=n
 set mousemodel=popup
 

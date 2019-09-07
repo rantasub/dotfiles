@@ -3,7 +3,7 @@ HISTSIZE=10000
 SAVEHIST=${HISTSIZE}
 
 setopt complete_aliases
-setopt correctall
+setopt correct
 setopt hist_ignore_space
 setopt prompt_subst
 unsetopt beep

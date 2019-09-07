@@ -1,3 +1,4 @@
+*.secret filter=git-crypt diff=git-crypt
 **/notmuch/config filter=git-crypt diff=git-crypt
 **/afew/config filter=git-crypt diff=git-crypt
 **/msmtp/config filter=git-crypt diff=git-crypt

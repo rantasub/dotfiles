@@ -1,0 +1,11 @@
+[include]
+    path = config.secret
+[user]
+	name = Stephan Fackler
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+[mergetool "vimdiff"]
+	path = nvim

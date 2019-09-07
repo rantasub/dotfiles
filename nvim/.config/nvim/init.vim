@@ -14,6 +14,8 @@ set nobackup
 set backupcopy=auto
 set undofile
 
+set diffopt=filler,internal,algorithm:patience
+
 set mouse=n
 set mousemodel=popup
 
@@ -251,6 +253,10 @@ nnoremap <Up> <C-w>k
 nnoremap <Down> <C-w>j
 nnoremap <Left> <C-w>h
 nnoremap <Right> <C-w>l
+
+nnoremap <Leader>1 :diffget LOCAL<CR>
+nnoremap <Leader>2 :diffget BASE<CR>
+nnoremap <Leader>3 :diffget REMOTE<CR>
 
 nnoremap <silent> <Leader>tc :MUcompleteAutoToggle<CR>
 nnoremap <silent> <Leader>tf :call altr#forward()<CR>

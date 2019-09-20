@@ -33,6 +33,7 @@ set wildmode=longest:full,full
 set completeopt=menuone,noselect
 set shortmess=c
 set noshowmode
+set signcolumn=auto:4
 
 set ignorecase
 set smartcase

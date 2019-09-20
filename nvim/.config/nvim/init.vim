@@ -145,6 +145,7 @@ let g:lsc_auto_map = {
     \ 'ShowHover': v:true,
     \ 'Completion': 'omnifunc',
     \}
+" packadd vim-lsc
 
 let g:fzf_colors = {
 	\ 'fg':      ['fg', 'Normal'],
@@ -208,23 +209,6 @@ augroup CompletionMenu
  autocmd!
  autocmd User MUcompletePmenu call PrintCompletionMessage()
  autocmd CompleteDone * echo "\r"
-augroup END
-
-augroup FileTypeCpp
- autocmd!
- autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd ale
- autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd lightline-ale
- autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd vim-altr
- autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd vim-autoformat
- autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd vim-cpp-enhanced-highlight
- autocmd BufWrite *.cpp,*.hpp,*.c,*.h :Autoformat
-
- autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd vim-lsc
- autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h call
-    \ RegisterLanguageServer('cpp', g:lsc_server_commands.cpp)
-
- autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h packadd echodoc.vim
- autocmd BufReadPre,FileReadPre *.cpp,*.hpp,*.c,*.h call echodoc#enable()
 augroup END
 
 augroup FileTypeQuickFix

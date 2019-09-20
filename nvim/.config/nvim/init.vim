@@ -146,6 +146,8 @@ let g:lsc_auto_map = {
     \ 'Completion': 'omnifunc',
     \}
 
+let g:echodoc#type = 'floating'
+
 let g:fzf_colors = {
 	\ 'fg':      ['fg', 'Normal'],
 	\ 'bg':      ['bg', 'Normal'],

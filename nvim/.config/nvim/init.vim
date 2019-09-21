@@ -16,6 +16,9 @@ set undofile
 
 set diffopt=filler,internal,algorithm:patience
 
+set grepprg=rg\ --vimgrep
+set grepformat=%f:%l:%c:%m
+
 set mouse=n
 set mousemodel=popup
 

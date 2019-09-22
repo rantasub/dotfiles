@@ -9,6 +9,7 @@ export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
 export ELINKS_CONFDIR="${XDG_DATA_HOME}/elinks"
 export PASSWORD_STORE_DIR=~/Passwörter
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/config"
+export AQBANKING_HOME="${XDG_DATA_HOME}/aqbanking"
 
 # Standard programs
 export EDITOR=nvim

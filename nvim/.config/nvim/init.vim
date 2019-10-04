@@ -52,18 +52,15 @@ colorscheme gruvbox
 highlight ActiveWindow guibg=#282828
 highlight InactiveWindow guibg=#2D2D2D
 
+let g:ale_linters = {}
+let g:lsc_server_commands = {}
+
 let g:asyncrun_open = 8
 let g:asyncrun_save = 2
 let g:asyncrun_last = 1
 let g:asyncrun_timer = 1000
 
 let g:better_whitespace_enabled = 1
-
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_experimental_simple_template_highlight = 1
-let g:cpp_concepts_highlight = 1
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
@@ -103,56 +100,6 @@ let g:mucomplete#buffer_relative_paths = 1
 
 let g:wordmotion_spaces = '_-.'
 
-let g:ale_close_preview_on_insert = 1
-let g:ale_completion_enabled = 0
-let g:ale_echo_cursor = 1
-let g:ale_cursor_detail = 0
-let g:ale_echo_delay = 1000
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 1
-let g:ale_linters_explicit = 1
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
-let g:ale_virtualtext_cursor = 0
-let g:ale_virtualtext_delay = 1000
-let g:ale_c_parse_compile_commands = 1
-let g:ale_cpp_clang_options = '-std=c++17 -Wall'
-let g:ale_cpp_clangtidy_checks = []
-let g:ale_linters = {
-    \ 'cpp':  ['clangd', 'clangtidy'],
-    \ 'python': ['pyflakes', 'pylint'],
-    \ }
-
-let g:lsc_enable_autocomplete = v:false
-let g:lsc_auto_completeopt = v:false
-let g:lsc_enable_diagnostics = v:false
-let g:lsc_server_commands = {
-    \ 'cpp': {
-    \   'command': 'clangd -limit-results=0',
-    \   'name': 'clangd',
-    \   'suppress_stderr': v:true,
-    \   },
-    \ 'python': {
-    \   'command': 'pyls',
-    \   'name': 'python-language-server',
-    \   'suppress_stderr': v:true,
-    \   },
-    \ }
-let g:lsc_auto_map = {
-    \ 'GoToDefinition': 'gd',
-    \ 'FindImplementations': 'gD',
-    \ 'FindReferences': 'gr',
-    \ 'Rename': '<Leader>lr',
-    \ 'DocumentSymbol': 'gs',
-    \ 'WorkspaceSymbol': 'gS',
-    \ 'FindCodeActions': '<Leader>la',
-    \ 'ShowHover': v:true,
-    \ 'Completion': 'omnifunc',
-    \}
-" packadd vim-lsc
-
-let g:echodoc#type = 'floating'
-
 let g:fzf_colors = {
 	\ 'fg':      ['fg', 'Normal'],
 	\ 'bg':      ['bg', 'Normal'],
@@ -178,20 +125,6 @@ function! FilterQuickfixListForCurrentBuffer()
     let l:qfListContent = getqflist()
     call filter(l:qfListContent, {idx, val -> val.bufnr == bufnr('%')})
     call setqflist(l:qfListContent)
-endfunction
-
-function! MakeCommandCompletion(ArgLead, CmdLine, CursorPos)
-    let l:words = split(a:CmdLine)
-    let l:words[0] = 'make'
-    let l:command = join(l:words)
-    return bash#complete(l:command)
-endfunction
-
-function! NinjaCommandCompletion(ArgLead, CmdLine, CursorPos)
-    let l:words = split(a:CmdLine)
-    let l:words[0] = 'ninja'
-    let l:command = join(l:words)
-    return bash#complete(l:command)
 endfunction
 
 function! HandleRipGrep(Output)
@@ -249,8 +182,6 @@ nnoremap <Leader>2 :diffget BASE<CR>
 nnoremap <Leader>3 :diffget REMOTE<CR>
 
 nnoremap <silent> <Leader>tc :MUcompleteAutoToggle<CR>
-nnoremap <silent> <Leader>tf :call altr#forward()<CR>
-nnoremap <silent> <Leader>tF :call altr#back()<CR>
 nnoremap <silent> <Leader>ti :IndentGuidesToggle<CR>
 nnoremap <silent> <Leader>tq :call asyncrun#quickfix_toggle(8)<CR>
 nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
@@ -261,9 +192,6 @@ nnoremap <silent> <Leader>f :Fd<CR>
 nnoremap <silent> g* :execute(':RgFileType ' .expand('<cword>'))<CR>
 
 tnoremap <A-e> <C-\><C-n>
-
-command! -nargs=* -complete=customlist,MakeCommandCompletion Make AsyncRun -program=make @ <args>
-command! -nargs=* -complete=customlist,NinjaCommandCompletion Ninja AsyncRun ninja <args>
 
 command! -bang -nargs=0 Fd call fzf#run(fzf#wrap(
     \ 'fd', {'source': 'fd', 'sink': 'edit'}, <bang>0))

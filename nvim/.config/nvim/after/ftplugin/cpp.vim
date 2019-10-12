@@ -3,17 +3,29 @@ if exists('b:ftplugin_after_loaded')
 endif
 let b:ftplugin_after_loaded = 1
 
-setlocal formatprg=clang-format
+function! ClangFormatRange(firstLine, lastLine)
+    let l:fileArg = shellescape(expand('%'))
+    let l:command = printf('clang-format -style=file
+                         \ -fallback-style=Microsoft
+                         \ -assume-filename=%s -lines=%d:%d',
+                         \ l:fileArg, a:firstLine, a:lastLine)
 
-function! FormatCurrentBuffer()
-    let view = winsaveview()
-    :keepjumps normal! gggqG
-    call winrestview(view)
+    let l:view = winsaveview()
+    let l:formatted = system(l:command, getline(1, '$'))
+    %delete
+    call setline(1, split(l:formatted, "\n", 1))
+    call winrestview(l:view)
 endfunction
+
+function! ClangFormatExpr()
+    call ClangFormatRange(v:lnum, v:lnum + v:count - 1)
+endfunction
+
+setlocal formatexpr=ClangFormatExpr()
 
 augroup AutoFormatOnSave
     autocmd!
-    autocmd BufWritePre <buffer> call FormatCurrentBuffer()
+    autocmd BufWritePre <buffer> call ClangFormatRange(1, line('$'))
 augroup END
 
 packadd vim-altr

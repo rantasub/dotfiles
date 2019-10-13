@@ -28,10 +28,6 @@ augroup AutoFormatOnSave
     autocmd BufWritePre <buffer> call ClangFormatRange(1, line('$'))
 augroup END
 
-packadd vim-altr
-nnoremap <silent> <Leader>a :call altr#forward()<CR>
-nnoremap <silent> <Leader>A :call altr#back()<CR>
-
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
@@ -49,6 +45,19 @@ let g:lsc_server_commands.cpp = {
     \   'suppress_stderr': v:true,
     \   }
 call lspsupport#enable('cpp')
+
+let g:projectionist_heuristics = {
+    \ 'compile_commands.json': {
+    \   '*.hpp': {
+    \       'alternate': '{}.cpp',
+    \       'type': 'header'
+    \       },
+    \   '*.cpp': {
+    \       'alternate': '{}.hpp',
+    \       'type': 'source'
+    \       }
+    \ }}
+packadd vim-projectionist
 
 function! MakeCommandCompletion(ArgLead, CmdLine, CursorPos)
     let l:words = split(a:CmdLine)

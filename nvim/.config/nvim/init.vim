@@ -139,6 +139,37 @@ function! HandleWinEnter()
     setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 endfunction
 
+function! s:getProjectionsFile(fname)
+    let l:cwd = fnamemodify(a:fname, ':p')
+    let l:projectionsFile = fnamemodify('~', ':p') .'.config/projections/'
+        \ .fnamemodify(l:cwd, ':h:t') .'/projections.json'
+
+    return l:projectionsFile
+endfunction
+
+function! s:LoadProjections()
+    let l:cwd = fnamemodify('.', ':p')
+    let l:projectionsFile = s:getProjectionsFile('.')
+    if filereadable(l:projectionsFile)
+        call projectionist#append(l:cwd,
+            \ json_decode(readfile(l:projectionsFile)))
+    endif
+endfunction
+
+function! s:HandleProjectSettings()
+    if !exists('g:loaded_projectionist') &&
+        \ filereadable(s:getProjectionsFile('<afile>'))
+        packadd vim-projectionist
+        call ProjectionistDetect(expand('<afile>:p'))
+    endif
+endfunction
+
+augroup ProjectSettings
+    autocmd!
+    autocmd BufReadPost * call s:HandleProjectSettings()
+    autocmd User ProjectionistDetect call s:LoadProjections()
+augroup END
+
 augroup WindowManagement
     autocmd!
     autocmd WinEnter * call HandleWinEnter()

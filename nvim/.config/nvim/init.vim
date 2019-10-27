@@ -234,3 +234,6 @@ command! -bang -nargs=1 RgFileType call fzf#run(fzf#wrap(
     \ 'sink': function('HandleRipGrep')}, <bang>0))
 
 cabbrev <expr> %% expand('%:p:h')
+
+packadd vim-textobj-user
+packadd vim-textobj-entire

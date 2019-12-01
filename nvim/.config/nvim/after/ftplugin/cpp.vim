@@ -38,7 +38,7 @@ packadd vim-cpp-enhanced-highlight
 let g:ale_c_parse_compile_commands = 1
 let g:ale_cpp_clang_options = '-std=c++17 -Weverything'
 let g:ale_cpp_clangtidy_checks = []
-let g:ale_linters.cpp = ['clangd', 'clangtidy']
+let g:ale_linters.cpp = ['clangd']
 let g:lsc_server_commands.cpp = {
     \   'command': 'clangd -limit-results=0',
     \   'name': 'clangd',

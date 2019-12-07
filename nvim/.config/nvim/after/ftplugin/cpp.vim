@@ -12,7 +12,7 @@ function! ClangFormatRange(firstLine, lastLine)
 
     let l:view = winsaveview()
     let l:formatted = system(l:command, getline(1, '$'))
-    %delete
+    %delete _
     call setline(1, split(l:formatted, "\n", 1))
     call winrestview(l:view)
 endfunction
@@ -24,7 +24,7 @@ endfunction
 setlocal formatexpr=ClangFormatExpr()
 
 augroup AutoFormatOnSave
-    autocmd!
+    autocmd! * <buffer>
     autocmd BufWritePre <buffer> call ClangFormatRange(1, line('$'))
 augroup END
 

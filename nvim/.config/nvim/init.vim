@@ -222,7 +222,7 @@ nnoremap <silent> <Leader>qq :call FilterQuickfixListForCurrentBuffer()<CR>
 nnoremap <silent> <Leader>f :Fd<CR>
 nnoremap <silent> g* :execute(':RgFileType ' .expand('<cword>'))<CR>
 
-tnoremap <A-e> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
 
 command! -bang -nargs=0 Fd call fzf#run(fzf#wrap(
     \ 'fd', {'source': 'fd', 'sink': 'edit'}, <bang>0))

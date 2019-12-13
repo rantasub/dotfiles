@@ -10,3 +10,7 @@ let g:lsc_server_commands.python = {
     \   'suppress_stderr': v:true,
     \   }
 call lspsupport#enable('python')
+
+let test#strategy = 'neovim'
+let test#neovim#term_position = 'belowright'
+packadd vim-test

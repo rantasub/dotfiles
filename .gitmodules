@@ -64,3 +64,6 @@
 [submodule "nvim/.config/nvim/pack/remote/opt/vim-test"]
 	path = nvim/.config/nvim/pack/remote/opt/vim-test
 	url = https://github.com/janko/vim-test
+[submodule "nvim/.config/nvim/pack/remote/start/vim-eunuch"]
+	path = nvim/.config/nvim/pack/remote/start/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch

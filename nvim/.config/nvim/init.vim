@@ -237,3 +237,4 @@ cabbrev <expr> %% expand('%:p:h')
 
 packadd vim-textobj-user
 packadd vim-textobj-entire
+packadd vim-indent-object

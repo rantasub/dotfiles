@@ -67,3 +67,6 @@
 [submodule "nvim/.config/nvim/pack/remote/start/vim-eunuch"]
 	path = nvim/.config/nvim/pack/remote/start/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch
+[submodule "nvim/.config/nvim/pack/remote/opt/vim-indent-object"]
+	path = nvim/.config/nvim/pack/remote/opt/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object

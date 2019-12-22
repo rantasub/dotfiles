@@ -3,6 +3,8 @@ if exists('b:ftplugin_after_loaded')
 endif
 let b:ftplugin_after_loaded = 1
 
+setlocal colorcolumn=89
+
 let g:ale_linters.python = ['flake8', 'mypy', 'pydocstyle', 'pylint', 'vulture']
 
 let b:ale_echo_msg_format = '[%linter% (%severity%)] %s'

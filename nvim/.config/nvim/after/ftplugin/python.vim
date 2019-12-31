@@ -21,3 +21,5 @@ call lspsupport#enable('python')
 let test#strategy = 'neovim'
 let test#neovim#term_position = 'belowright'
 packadd vim-test
+
+packadd vim-pythonsense

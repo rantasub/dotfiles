@@ -98,6 +98,8 @@ let g:mucomplete#completion_delay = 1000
 let g:mucomplete#always_use_completeopt = 1
 let g:mucomplete#buffer_relative_paths = 1
 
+let g:neoterm_automap_keys = '<Leader>rr'
+
 let g:wordmotion_spaces = '_-.'
 
 let g:fzf_colors = {

@@ -73,3 +73,6 @@
 [submodule "nvim/.config/nvim/pack/remote/start/vim-pythonsense"]
 	path = nvim/.config/nvim/pack/remote/start/vim-pythonsense
 	url = https://github.com/jeetsukumaran/vim-pythonsense
+[submodule "nvim/.config/nvim/pack/remote/start/neoterm"]
+	path = nvim/.config/nvim/pack/remote/start/neoterm
+	url = https://github.com/kassio/neoterm

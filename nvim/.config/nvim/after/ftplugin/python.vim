@@ -18,8 +18,7 @@ let g:lsc_server_commands.python = {
     \   }
 call lspsupport#enable('python')
 
-let test#strategy = 'neovim'
-let test#neovim#term_position = 'belowright'
+let test#strategy = 'neoterm'
 packadd vim-test
 
 packadd vim-pythonsense

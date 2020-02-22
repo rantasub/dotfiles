@@ -31,9 +31,6 @@
 [submodule "nvim/.config/nvim/pack/remote/start/vim-fugitive"]
 	path = nvim/.config/nvim/pack/remote/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "nvim/.config/nvim/pack/remote/start/vim-indent-guides"]
-	path = nvim/.config/nvim/pack/remote/start/vim-indent-guides
-	url = https://github.com/nathanaelkane/vim-indent-guides
 [submodule "nvim/.config/nvim/pack/remote/start/vim-mucomplete"]
 	path = nvim/.config/nvim/pack/remote/start/vim-mucomplete
 	url = https://github.com/lifepillar/vim-mucomplete

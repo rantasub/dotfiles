@@ -62,3 +62,5 @@ endfunction
 
 command! -nargs=* -complete=customlist,MakeCommandCompletion Make AsyncRun -program=make @ <args>
 command! -nargs=* -complete=customlist,NinjaCommandCompletion Ninja AsyncRun ninja <args>
+
+packadd termdebug

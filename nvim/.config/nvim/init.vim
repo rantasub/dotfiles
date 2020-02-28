@@ -188,8 +188,6 @@ augroup FileTypeQuickFix
  autocmd FileType qf set nobuflisted
 augroup END
 
-nnoremap <silent> <Leader>ec :split $MYVIMRC<CR>
-nnoremap <silent> <Leader>eC :edit $MYVIMRC<CR>
 augroup VimRC
  autocmd!
  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
@@ -214,6 +212,9 @@ nnoremap <Leader>1 :diffget LOCAL<CR>
 nnoremap <Leader>2 :diffget BASE<CR>
 nnoremap <Leader>3 :diffget REMOTE<CR>
 
+nnoremap <silent> <Leader>ecc :split $MYVIMRC<CR>
+nnoremap <silent> <Leader>ecf :EditFileTypePlugin<CR>
+
 nnoremap <silent> <Leader>tc :MUcompleteAutoToggle<CR>
 nnoremap <silent> <Leader>ti :IndentGuidesToggle<CR>
 nnoremap <silent> <Leader>tq :call asyncrun#quickfix_toggle(8)<CR>
@@ -226,6 +227,9 @@ nnoremap <silent> g* :execute(':RgFileType ' .expand('<cword>'))<CR>
 
 tnoremap <Esc> <C-\><C-n>
 
+command! -nargs=? -complete=filetype EditFileTypePlugin
+    \ execute 'edit ' .stdpath('config') .'/after/ftplugin/'
+    \ .(empty(<q-args>) ? &filetype : <q-args>) .'.vim'
 command! -bang -nargs=0 Fd call fzf#run(fzf#wrap(
     \ 'fd', {'source': 'fd', 'sink': 'edit'}, <bang>0))
 command! -bang -nargs=1 Rg call fzf#run(fzf#wrap(

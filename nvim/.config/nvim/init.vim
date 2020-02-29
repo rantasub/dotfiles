@@ -38,6 +38,9 @@ set shortmess=c
 set noshowmode
 set signcolumn=auto:4
 
+set foldmethod=syntax
+set foldlevelstart=99
+
 set ignorecase
 set smartcase
 set incsearch

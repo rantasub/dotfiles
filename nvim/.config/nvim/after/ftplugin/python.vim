@@ -4,6 +4,7 @@ endif
 let b:ftplugin_after_loaded = 1
 
 setlocal colorcolumn=89
+setlocal foldcolumn=4
 
 let g:ale_linters.python = ['flake8', 'mypy', 'pydocstyle', 'pylint', 'vulture']
 

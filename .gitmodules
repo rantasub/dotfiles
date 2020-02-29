@@ -13,9 +13,6 @@
 [submodule "nvim/.config/nvim/pack/remote/start/asyncrun.vim"]
 	path = nvim/.config/nvim/pack/remote/start/asyncrun.vim
 	url = https://github.com/skywind3000/asyncrun.vim
-[submodule "nvim/.config/nvim/pack/remote/start/gruvbox"]
-	path = nvim/.config/nvim/pack/remote/start/gruvbox
-	url = https://github.com/morhetz/gruvbox
 [submodule "nvim/.config/nvim/pack/remote/start/targets.vim"]
 	path = nvim/.config/nvim/pack/remote/start/targets.vim
 	url = https://github.com/wellle/targets.vim
@@ -67,3 +64,6 @@
 [submodule "nvim/.config/nvim/pack/remote/start/neoterm"]
 	path = nvim/.config/nvim/pack/remote/start/neoterm
 	url = https://github.com/kassio/neoterm
+[submodule "nvim/.config/nvim/pack/remote/opt/gruvbox"]
+	path = nvim/.config/nvim/pack/remote/opt/gruvbox
+	url = https://github.com/gruvbox-community/gruvbox

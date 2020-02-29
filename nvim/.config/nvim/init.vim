@@ -28,7 +28,7 @@ set softtabstop=4
 set expandtab
 set colorcolumn=80
 set scrolloff=10
-set number relativenumber
+set number
 set cursorline
 set hidden
 set wildmenu

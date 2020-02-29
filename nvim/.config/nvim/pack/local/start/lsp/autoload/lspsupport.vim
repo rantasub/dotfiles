@@ -30,7 +30,6 @@ function! lspsupport#enable(language)
     let g:ale_virtualtext_cursor = 0
     let g:ale_virtualtext_delay = 1000
     packadd ale
-    packadd lightline-ale
 
     let g:echodoc#type = 'floating'
     packadd echodoc.vim

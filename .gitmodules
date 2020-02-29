@@ -7,9 +7,6 @@
 [submodule "nvim/.config/nvim/pack/remote/opt/vim-lsc"]
 	path = nvim/.config/nvim/pack/remote/opt/vim-lsc
 	url = https://github.com/natebosch/vim-lsc
-[submodule "nvim/.config/nvim/pack/remote/start/lightline.vim"]
-	path = nvim/.config/nvim/pack/remote/start/lightline.vim
-	url = https://github.com/itchyny/lightline.vim
 [submodule "nvim/.config/nvim/pack/remote/opt/ale"]
 	path = nvim/.config/nvim/pack/remote/opt/ale
 	url = https://github.com/w0rp/ale
@@ -43,9 +40,6 @@
 [submodule "nvim/.config/nvim/pack/remote/start/vim-bash-completion"]
 	path = nvim/.config/nvim/pack/remote/start/vim-bash-completion
 	url = https://github.com/rantasub/vim-bash-completion
-[submodule "nvim/.config/nvim/pack/remote/opt/lightline-ale"]
-	path = nvim/.config/nvim/pack/remote/opt/lightline-ale
-	url = https://github.com/maximbaz/lightline-ale
 [submodule "nvim/.config/nvim/pack/remote/opt/echodoc.vim"]
 	path = nvim/.config/nvim/pack/remote/opt/echodoc.vim
 	url = https://github.com/Shougo/echodoc.vim

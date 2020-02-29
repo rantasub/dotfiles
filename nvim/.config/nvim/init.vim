@@ -176,7 +176,6 @@ nnoremap <silent> <Leader>ecc :split $MYVIMRC<CR>
 nnoremap <silent> <Leader>ecf :EditFileTypePlugin<CR>
 
 nnoremap <silent> <Leader>tc :MUcompleteAutoToggle<CR>
-nnoremap <silent> <Leader>ti :IndentGuidesToggle<CR>
 nnoremap <silent> <Leader>tq :call asyncrun#quickfix_toggle(8)<CR>
 nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
 

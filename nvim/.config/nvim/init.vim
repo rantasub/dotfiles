@@ -65,10 +65,6 @@ let g:asyncrun_timer = 1000
 
 let g:better_whitespace_enabled = 1
 
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-
 let g:mucomplete#enable_auto_at_startup = 0
 let g:mucomplete#completion_delay = 1000
 let g:mucomplete#always_use_completeopt = 1

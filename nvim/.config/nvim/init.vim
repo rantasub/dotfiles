@@ -43,8 +43,9 @@ set foldlevelstart=99
 
 set ignorecase
 set smartcase
+set inccommand=split
 set incsearch
-set hlsearch
+set nohlsearch
 set noshowmatch
 
 let g:gruvbox_italic = 1

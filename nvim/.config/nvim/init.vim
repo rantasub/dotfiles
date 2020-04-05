@@ -56,9 +56,6 @@ colorscheme gruvbox
 highlight ActiveWindow guibg=#282828
 highlight InactiveWindow guibg=#2D2D2D
 
-let g:ale_linters = {}
-let g:lsc_server_commands = {}
-
 let g:asyncrun_open = 8
 let g:asyncrun_save = 2
 let g:asyncrun_last = 1

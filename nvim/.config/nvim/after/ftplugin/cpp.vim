@@ -36,16 +36,18 @@ let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 packadd vim-cpp-enhanced-highlight
 
-let g:ale_c_parse_compile_commands = 1
-let g:ale_cpp_clang_options = '-std=c++17 -Weverything'
-let g:ale_cpp_clangtidy_checks = []
-let g:ale_linters.cpp = ['clangd']
-let g:lsc_server_commands.cpp = {
-    \   'command': 'clangd -limit-results=0',
-    \   'name': 'clangd',
-    \   'suppress_stderr': v:true,
-    \   }
-call lspsupport#enable('cpp')
+let b:ale_linters = ['clangd']
+let b:ale_c_build_dir_names = ['build']
+let b:ale_c_build_dir = ''
+let b:ale_c_parse_compile_commands = 1
+
+let b:ale_cpp_clangd_executable = 'clangd'
+let b:ale_cpp_clangd_options = '--background-index --clang-tidy '
+                            \ .'--completion-style=detailed '
+                            \ .'--header-insertion=never '
+                            \ .'--header-insertion-decorators '
+                            \ .'--suggest-missing-includes'
+call lspsupport#enable()
 
 function! MakeCommandCompletion(ArgLead, CmdLine, CursorPos)
     let l:words = split(a:CmdLine)

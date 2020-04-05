@@ -4,9 +4,6 @@
 [submodule "nvim/.config/nvim/pack/remote/start/vim-bufkill"]
 	path = nvim/.config/nvim/pack/remote/start/vim-bufkill
 	url = https://github.com/qpkorr/vim-bufkill
-[submodule "nvim/.config/nvim/pack/remote/opt/vim-lsc"]
-	path = nvim/.config/nvim/pack/remote/opt/vim-lsc
-	url = https://github.com/natebosch/vim-lsc
 [submodule "nvim/.config/nvim/pack/remote/opt/ale"]
 	path = nvim/.config/nvim/pack/remote/opt/ale
 	url = https://github.com/w0rp/ale

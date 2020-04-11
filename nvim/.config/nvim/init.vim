@@ -71,6 +71,7 @@ let g:mucomplete#always_use_completeopt = 1
 let g:mucomplete#buffer_relative_paths = 1
 
 let g:neoterm_automap_keys = '<Leader>rr'
+let g:neoterm_autoscroll = 1
 
 let g:wordmotion_spaces = '_-.'
 

@@ -16,9 +16,6 @@
 [submodule "nvim/.config/nvim/pack/remote/start/tcomment_vim"]
 	path = nvim/.config/nvim/pack/remote/start/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim
-[submodule "nvim/.config/nvim/pack/remote/start/vim-better-whitespace"]
-	path = nvim/.config/nvim/pack/remote/start/vim-better-whitespace
-	url = https://github.com/ntpeters/vim-better-whitespace
 [submodule "nvim/.config/nvim/pack/remote/start/vim-fugitive"]
 	path = nvim/.config/nvim/pack/remote/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive

@@ -38,6 +38,10 @@ set shortmess=c
 set noshowmode
 set signcolumn=auto:4
 
+set showbreak=↪\ 
+set list
+set listchars=tab:▸\ ,trail:•,precedes:←,extends:→,nbsp:␣
+
 set foldmethod=syntax
 set foldlevelstart=99
 
@@ -60,8 +64,6 @@ let g:asyncrun_open = 8
 let g:asyncrun_save = 2
 let g:asyncrun_last = 1
 let g:asyncrun_timer = 1000
-
-let g:better_whitespace_enabled = 1
 
 let g:mucomplete#enable_auto_at_startup = 0
 let g:mucomplete#completion_delay = 1000
@@ -171,7 +173,6 @@ nnoremap <silent> <Leader>ecf :EditFileTypePlugin<CR>
 
 nnoremap <silent> <Leader>tc :MUcompleteAutoToggle<CR>
 nnoremap <silent> <Leader>tq :call asyncrun#quickfix_toggle(8)<CR>
-nnoremap <silent> <Leader>tw :ToggleWhitespace<CR>
 
 nnoremap <silent> <Leader>qq :call FilterQuickfixListForCurrentBuffer()<CR>
 

@@ -34,7 +34,7 @@ set hidden
 set wildmenu
 set wildmode=longest:full,full
 set completeopt=menuone,noselect
-set shortmess=c
+set shortmess=tc
 set noshowmode
 set signcolumn=auto:4
 

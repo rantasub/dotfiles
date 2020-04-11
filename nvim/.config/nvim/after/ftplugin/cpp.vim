@@ -22,7 +22,6 @@ function! ClangFormatExpr()
 endfunction
 
 setlocal formatexpr=ClangFormatExpr()
-setlocal foldcolumn=4
 
 augroup AutoFormatOnSave
     autocmd! * <buffer>

@@ -1,4 +1,5 @@
 alias tmux='tmux -f ~/.config/tmux/tmux.conf'
+alias jameica='jameica --file /home/sfackler/.local/share/jameica'
 
 # Configure colorful output (see Arch wiki)
 alias ls='ls --color=auto'

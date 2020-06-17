@@ -4,6 +4,8 @@ export XDG_DATA_HOME=~/.local/share
 export XDG_CACHE_HOME=~/.cache
 
 # Configuration of programs running without an X session
+export PATH="${PATH}:/usr/share/git/git-jump"
+
 export LESSHISTFILE=/dev/null
 export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
 export ELINKS_CONFDIR="${XDG_DATA_HOME}/elinks"

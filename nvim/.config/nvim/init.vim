@@ -64,8 +64,6 @@ highlight InactiveWindow guibg=#2D2D2D
 
 let g:asyncrun_open = 8
 let g:asyncrun_save = 2
-let g:asyncrun_last = 1
-let g:asyncrun_timer = 1000
 
 let g:mucomplete#enable_auto_at_startup = 0
 let g:mucomplete#completion_delay = 1000

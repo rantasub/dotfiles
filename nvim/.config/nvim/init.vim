@@ -52,6 +52,8 @@ set incsearch
 set nohlsearch
 set noshowmatch
 
+set splitright
+
 let g:gruvbox_italic = 1
 set background=dark
 set termguicolors
@@ -71,6 +73,7 @@ let g:mucomplete#always_use_completeopt = 1
 let g:mucomplete#buffer_relative_paths = 1
 
 let g:neoterm_automap_keys = '<Leader>rr'
+let g:neoterm_default_mod = 'vertical'
 let g:neoterm_autoscroll = 1
 
 let g:wordmotion_spaces = '_-.'

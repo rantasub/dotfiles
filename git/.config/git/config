@@ -9,3 +9,5 @@
 	prompt = false
 [mergetool "vimdiff"]
 	path = nvim
+[init]
+	defaultBranch = main

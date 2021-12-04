@@ -1,9 +1,7 @@
-#!/usr/bin/env python2
-
 import subprocess
 
 def _get_pass_output(account):
-    return subprocess.check_output('pass Mail/' + account, shell=True)
+    return subprocess.check_output('pass Mail/' + account, text=True, shell=True)
 
 def get_pass(account):
     return _get_pass_output(account).splitlines()[0]

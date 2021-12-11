@@ -65,21 +65,11 @@ highlight InactiveWindow guibg=#2D2D2D
 let g:asyncrun_open = 8
 let g:asyncrun_save = 2
 
-let g:mucomplete#enable_auto_at_startup = 0
-let g:mucomplete#completion_delay = 1000
-let g:mucomplete#always_use_completeopt = 1
-let g:mucomplete#buffer_relative_paths = 1
-
 let g:neoterm_automap_keys = '<Leader>rr'
 let g:neoterm_default_mod = 'vertical'
 let g:neoterm_autoscroll = 1
 
 let g:wordmotion_spaces = '_-.'
-
-function! PrintCompletionMessage()
-    unsilent echo 'Completion method: ' .get(g:mucomplete#msg#methods, g:mucomplete_current_method)
-    let &readonly=&readonly " Force updating of the cursor
-endfunction
 
 function! FilterQuickfixListForCurrentBuffer()
     let l:qfListContent = getqflist()
@@ -135,12 +125,6 @@ augroup WindowManagement
     autocmd WinEnter * call HandleWinEnter()
 augroup END
 
-augroup CompletionMenu
- autocmd!
- autocmd User MUcompletePmenu call PrintCompletionMessage()
- autocmd CompleteDone * echo "\r"
-augroup END
-
 augroup FileTypeQuickFix
  autocmd!
  autocmd FileType qf set nobuflisted
@@ -173,7 +157,6 @@ nnoremap <Leader>3 :diffget REMOTE<CR>
 nnoremap <silent> <Leader>ecc :split $MYVIMRC<CR>
 nnoremap <silent> <Leader>ecf :EditFileTypePlugin<CR>
 
-nnoremap <silent> <Leader>tc :MUcompleteAutoToggle<CR>
 nnoremap <silent> <Leader>tq :call asyncrun#quickfix_toggle(8)<CR>
 
 nnoremap <silent> <Leader>qq :call FilterQuickfixListForCurrentBuffer()<CR>
@@ -200,3 +183,12 @@ cabbrev <expr> %% expand('%:p:h')
 packadd vim-textobj-user
 packadd vim-textobj-entire
 packadd vim-indent-object
+
+packadd plenary.nvim
+packadd null-ls.nvim
+packadd nvim-lspconfig
+packadd sekme.nvim
+
+lua << EOF
+require('mylspconfig')
+EOF

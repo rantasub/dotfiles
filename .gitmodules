@@ -4,9 +4,6 @@
 [submodule "nvim/.config/nvim/pack/remote/start/vim-bufkill"]
 	path = nvim/.config/nvim/pack/remote/start/vim-bufkill
 	url = https://github.com/qpkorr/vim-bufkill
-[submodule "nvim/.config/nvim/pack/remote/opt/ale"]
-	path = nvim/.config/nvim/pack/remote/opt/ale
-	url = https://github.com/w0rp/ale
 [submodule "nvim/.config/nvim/pack/remote/start/asyncrun.vim"]
 	path = nvim/.config/nvim/pack/remote/start/asyncrun.vim
 	url = https://github.com/skywind3000/asyncrun.vim
@@ -19,9 +16,6 @@
 [submodule "nvim/.config/nvim/pack/remote/start/vim-fugitive"]
 	path = nvim/.config/nvim/pack/remote/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "nvim/.config/nvim/pack/remote/start/vim-mucomplete"]
-	path = nvim/.config/nvim/pack/remote/start/vim-mucomplete
-	url = https://github.com/lifepillar/vim-mucomplete
 [submodule "nvim/.config/nvim/pack/remote/start/vim-wordmotion"]
 	path = nvim/.config/nvim/pack/remote/start/vim-wordmotion
 	url = https://github.com/chaoren/vim-wordmotion
@@ -31,9 +25,6 @@
 [submodule "nvim/.config/nvim/pack/remote/start/vim-bash-completion"]
 	path = nvim/.config/nvim/pack/remote/start/vim-bash-completion
 	url = https://github.com/rantasub/vim-bash-completion
-[submodule "nvim/.config/nvim/pack/remote/opt/echodoc.vim"]
-	path = nvim/.config/nvim/pack/remote/opt/echodoc.vim
-	url = https://github.com/Shougo/echodoc.vim
 [submodule "nvim/.config/nvim/pack/remote/opt/vim-projectionist"]
 	path = nvim/.config/nvim/pack/remote/opt/vim-projectionist
 	url = https://github.com/tpope/vim-projectionist
@@ -61,3 +52,15 @@
 [submodule "nvim/.config/nvim/pack/remote/opt/gruvbox"]
 	path = nvim/.config/nvim/pack/remote/opt/gruvbox
 	url = https://github.com/gruvbox-community/gruvbox
+[submodule "nvim/.config/nvim/pack/remote/opt/nvim-lspconfig"]
+	path = nvim/.config/nvim/pack/remote/opt/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule "nvim/.config/nvim/pack/remote/opt/sekme.nvim"]
+	path = nvim/.config/nvim/pack/remote/opt/sekme.nvim
+	url = https://github.com/Furkanzmc/sekme.nvim
+[submodule "nvim/.config/nvim/pack/remote/opt/null-ls.nvim"]
+	path = nvim/.config/nvim/pack/remote/opt/null-ls.nvim
+	url = https://github.com/jose-elias-alvarez/null-ls.nvim
+[submodule "nvim/.config/nvim/pack/remote/opt/plenary.nvim"]
+	path = nvim/.config/nvim/pack/remote/opt/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim

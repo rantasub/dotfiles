@@ -64,3 +64,6 @@
 [submodule "nvim/.config/nvim/pack/remote/opt/plenary.nvim"]
 	path = nvim/.config/nvim/pack/remote/opt/plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim
+[submodule "nvim/.config/nvim/pack/remote/start/vim-sandwich"]
+	path = nvim/.config/nvim/pack/remote/start/vim-sandwich
+	url = https://github.com/machakann/vim-sandwich

@@ -1,15 +1,3 @@
-local null_ls = require("null-ls")
-local sources = {
-    null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.isort,
-    null_ls.builtins.formatting.stylua.with({
-        extra_args = { "--config-path", vim.fn.expand("~/.config/stylua.toml") },
-    }),
-    null_ls.builtins.diagnostics.flake8,
-    null_ls.builtins.diagnostics.pylint,
-}
-null_ls.config({ diagnostics_format = "#{m} (#{s})", sources = sources })
-
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -57,23 +45,30 @@ local on_attach_disabled_formatting = function(client, bufnr)
     on_attach(client, bufnr)
 end
 
-local nvim_lsp = require("lspconfig")
-local setup_lsp = function(lsp, on_attach)
-    nvim_lsp[lsp].setup({
-        on_attach = on_attach,
-        flags = {
-            debounce_text_changes = 150,
-        },
-    })
-end
+local null_ls = require("null-ls")
+local sources = {
+    null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.isort,
+    null_ls.builtins.formatting.stylua.with({
+        extra_args = { "--config-path", vim.fn.expand("~/.config/stylua.toml") },
+    }),
+    null_ls.builtins.diagnostics.flake8,
+    null_ls.builtins.diagnostics.pylint,
+}
+null_ls.setup({ diagnostics_format = "#{m} (#{s})", sources = sources })
 
-local servers = { "clangd", "null-ls" }
-local servers_disabled_formatting = { "pylsp" }
-for _, lsp in ipairs(servers) do
-    setup_lsp(lsp, on_attach)
-end
-for _, lsp in ipairs(servers_disabled_formatting) do
-    setup_lsp(lsp, on_attach_disabled_formatting)
-end
+local nvim_lsp = require("lspconfig")
+nvim_lsp.pylsp.setup({
+    on_attach = on_attach_disabled_formatting,
+    flags = {
+        debounce_text_changes = 150,
+    },
+})
+nvim_lsp.clangd.setup({
+    on_attach = on_attach,
+    flags = {
+        debounce_text_changes = 150,
+    },
+})
 
 require("sekme").setup({})

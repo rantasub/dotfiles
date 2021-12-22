@@ -58,7 +58,7 @@ local sources = {
 null_ls.setup({ diagnostics_format = "#{m} (#{s})", sources = sources })
 
 local nvim_lsp = require("lspconfig")
-nvim_lsp.pylsp.setup({
+nvim_lsp.jedi_language_server.setup({
     on_attach = on_attach_disabled_formatting,
     flags = {
         debounce_text_changes = 150,

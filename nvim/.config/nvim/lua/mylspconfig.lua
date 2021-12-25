@@ -53,6 +53,7 @@ local sources = {
         extra_args = { "--config-path", vim.fn.expand("~/.config/stylua.toml") },
     }),
     null_ls.builtins.diagnostics.flake8,
+    null_ls.builtins.diagnostics.mypy,
     null_ls.builtins.diagnostics.pylint,
 }
 null_ls.setup({ diagnostics_format = "#{m} (#{s})", sources = sources })

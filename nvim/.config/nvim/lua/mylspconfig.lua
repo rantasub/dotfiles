@@ -38,13 +38,6 @@ local on_attach = function(client, bufnr)
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
-local on_attach_disabled_formatting = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
-
-    on_attach(client, bufnr)
-end
-
 local null_ls = require("null-ls")
 local sources = {
     null_ls.builtins.formatting.black,
@@ -62,14 +55,14 @@ null_ls.setup({
     sources = sources,
 })
 
-local nvim_lsp = require("lspconfig")
-nvim_lsp.jedi_language_server.setup({
-    on_attach = on_attach_disabled_formatting,
+local lspconfig = require("lspconfig")
+lspconfig.jedi_language_server.setup({
+    on_attach = on_attach,
     flags = {
         debounce_text_changes = 150,
     },
 })
-nvim_lsp.clangd.setup({
+lspconfig.clangd.setup({
     on_attach = on_attach,
     flags = {
         debounce_text_changes = 150,

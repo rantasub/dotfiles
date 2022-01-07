@@ -56,7 +56,11 @@ local sources = {
     null_ls.builtins.diagnostics.mypy,
     null_ls.builtins.diagnostics.pylint,
 }
-null_ls.setup({ diagnostics_format = "#{m} (#{s})", sources = sources })
+null_ls.setup({
+    on_attach = on_attach,
+    diagnostics_format = "#{m} (#{s})",
+    sources = sources,
+})
 
 local nvim_lsp = require("lspconfig")
 nvim_lsp.jedi_language_server.setup({

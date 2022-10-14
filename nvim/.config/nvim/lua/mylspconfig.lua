@@ -2,9 +2,6 @@ local on_attach = function(client, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
-    local function buf_set_option(...)
-        vim.api.nvim_buf_set_option(bufnr, ...)
-    end
 
     local opts = { noremap = true, silent = true }
     buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -28,26 +25,30 @@ local on_attach = function(client, bufnr)
         opts
     )
 
-    if client.resolved_capabilities.document_formatting then
-        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.format({ bufnr = bufnr })
+            end,
+        })
     end
-    if client.resolved_capabilities.document_range_formatting then
-        buf_set_option("formatexpr", "v:lua.vim.lsp.formatexpr()")
-    end
-
-    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
 local null_ls = require("null-ls")
 local sources = {
+    null_ls.builtins.diagnostics.flake8,
+    null_ls.builtins.diagnostics.mypy,
+    null_ls.builtins.diagnostics.pydocstyle,
+    null_ls.builtins.diagnostics.pylint,
+    null_ls.builtins.diagnostics.vulture,
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.isort,
     null_ls.builtins.formatting.stylua.with({
         extra_args = { "--config-path", vim.fn.expand("~/.config/stylua.toml") },
     }),
-    null_ls.builtins.diagnostics.flake8,
-    null_ls.builtins.diagnostics.mypy,
-    null_ls.builtins.diagnostics.pylint,
 }
 null_ls.setup({
     on_attach = on_attach,
@@ -56,17 +57,7 @@ null_ls.setup({
 })
 
 local lspconfig = require("lspconfig")
-lspconfig.jedi_language_server.setup({
-    on_attach = on_attach,
-    flags = {
-        debounce_text_changes = 150,
-    },
-})
-lspconfig.clangd.setup({
-    on_attach = on_attach,
-    flags = {
-        debounce_text_changes = 150,
-    },
-})
+lspconfig.jedi_language_server.setup({ on_attach = on_attach })
+lspconfig.clangd.setup({ on_attach = on_attach })
 
 require("sekme").setup({})
